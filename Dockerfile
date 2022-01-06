@@ -99,7 +99,9 @@ RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     ./wireshark-expect && \
     rm -f ./wireshark-expect && \
     service postgresql start && \
-    msfdb init
+    msfdb init && \
+    adduser -D kali && \
+    addgroup kali wireshark
 
 # OpenGL / MESA
 # adds 68 MB to image, disabled
