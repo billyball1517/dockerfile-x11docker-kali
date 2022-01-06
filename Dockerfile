@@ -98,9 +98,7 @@ RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     wget https://raw.githubusercontent.com/billyball1517/dockerfile-x11docker-lxde/master/wireshark-expect && \
     chmod +x wireshark-expect && \
     ./wireshark-expect && \
-    rm -f ./wireshark-expect && \
-#    echo "GROUP=138" >> /etc/default/useradd
-
+    rm -f ./wireshark-expect
 
 # OpenGL / MESA
 # adds 68 MB to image, disabled
