@@ -33,6 +33,7 @@ RUN echo "deb http://deb.debian.org/debian stable main non-free contrib" >> /etc
 
 COPY preferences /etc/apt/preferences
 
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 
 RUN apt-get update && \
     apt-get install -y locales locales-all
