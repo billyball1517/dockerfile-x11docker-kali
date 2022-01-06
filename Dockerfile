@@ -60,7 +60,8 @@ RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
       kali-linux-headless \
       kali-tools-top10 && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* \
+    git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng
 
 # OpenGL / MESA
 # adds 68 MB to image, disabled
