@@ -27,7 +27,7 @@ FROM kalilinux/kali-last-release:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Event the "stable" kali repos often have breakages so we add debian stable as a backstop
+# Even the "stable" kali repos often have breakages so we add debian stable as a backstop
 
 RUN echo "deb http://deb.debian.org/debian stable main non-free contrib" >> /etc/apt/sources.list
 
