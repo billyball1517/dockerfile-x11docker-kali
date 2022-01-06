@@ -11,15 +11,7 @@ echo "Starting with UID : $USER_ID"
 adduser -D -u $USER_ID kali
 export HOME=/home/kali
 
-addgroup docker
-chown -R root:docker /run/docker*
-
-addgroup -g $GROUP_ID external-kvm
-
-addgroup user docker
-addgroup user external-kvm
-addgroup user libvirt
-addgroup user qemu
+addgroup kali qemu
 
 service postgresql start
 
