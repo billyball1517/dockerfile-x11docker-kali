@@ -9,7 +9,7 @@ GROUP_ID=${LOCAL_GROUP_ID:-9001}
 
 echo "Starting with UID : $USER_ID"
 adduser -D -u $USER_ID user
-export HOME=/home/user
+export HOME=/home/kali
 
 addgroup docker
 chown -R root:docker /run/docker*
