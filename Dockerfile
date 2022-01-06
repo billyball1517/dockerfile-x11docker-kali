@@ -38,6 +38,7 @@ RUN apt-get update && \
       policykit-1-gnome && \
     apt-get install -y --no-install-recommends \
       dbus-x11 \
+      lxde \
       lxlauncher \
       lxmenu-data \
       lxtask \
@@ -55,6 +56,7 @@ RUN apt-get update && \
       kali-tools-top10 \
       kali-desktop-lxde
 
+# misc crap
 RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
     apt-key add microsoft.asc && \
     add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" && \
