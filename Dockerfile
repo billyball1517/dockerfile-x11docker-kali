@@ -99,7 +99,7 @@ RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     chmod +x wireshark-expect && \
     ./wireshark-expect && \
     rm -f ./wireshark-expect && \
-    echo "GROUP=138" >> /etc/default/useradd
+#    echo "GROUP=138" >> /etc/default/useradd
 
 
 # OpenGL / MESA
