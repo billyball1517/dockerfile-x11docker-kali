@@ -24,17 +24,27 @@
 # See x11docker --help for further options.
 
 FROM kalilinux/kali-last-release:latest
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Event the "stable" kali repos often have breakages so we add debian stable as a backstop
+
+RUN echo "deb http://deb.debian.org/debian stable main non-free contrib" >> /etc/apt/sources.list && \
+    
+
 RUN apt-get update && \
-    env DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    apt-get install -y --no-install-recommends \
       policykit-1-gnome && \
-    env DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    apt-get install -y --no-install-recommends \
       dbus-x11 \
-      lxde \
+      kali-desktop-lxde \
       lxlauncher \
       lxmenu-data \
       lxtask \
       procps \
-      psmisc
+      psmisc && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # OpenGL / MESA
 # adds 68 MB to image, disabled
