@@ -44,7 +44,7 @@ RUN apt-get update && \
       lxtask \
       procps \
       psmisc \
-      apt-transport-https \
+      apt-transport-https wget gpg \
       mesa-utils mesa-utils-extra libxv1 
 
 RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg && \
