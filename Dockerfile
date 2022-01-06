@@ -82,9 +82,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       vim \
       terminator \
       iputils* \
-      kali-tweaks \
-       \
-       && \
+      kali-tweaks && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
