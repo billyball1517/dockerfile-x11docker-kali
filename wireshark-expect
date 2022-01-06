@@ -1,0 +1,7 @@
+#!/usr/bin/expect
+spawn dpkg-reconfigure wireshark-common -f readline
+expect "Should non-superusers be able to capture packets?"
+send "yes\r"
+
+# done
+expect eof
