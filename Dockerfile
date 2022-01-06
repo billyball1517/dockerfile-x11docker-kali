@@ -43,12 +43,20 @@ RUN apt-get update && \
       lxmenu-data \
       lxtask \
       procps \
-      psmisc
+      psmisc \
+      apt-transport-https
 
-RUN apt-get install -y --no-install-recommends \
+RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg && \
+    install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/ && \
+    sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list' && \
+    rm -f packages.microsoft.gpg && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
+      code \
       bash-completion \
       vim \
       terminator \
+      iputils* \
       kali-linux-headless \
       kali-tools-top10 && \
     apt-get clean && \
@@ -56,7 +64,7 @@ RUN apt-get install -y --no-install-recommends \
 
 # OpenGL / MESA
 # adds 68 MB to image, disabled
-#RUN apt-get install -y mesa-utils mesa-utils-extra libxv1 
+# RUN apt-get install -y mesa-utils mesa-utils-extra libxv1 
 
 
 # GTK 2 and 3 settings for icons and style, wallpaper
