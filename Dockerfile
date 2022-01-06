@@ -52,6 +52,8 @@ RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
     rm -f packages.microsoft.gpg && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
+    # this first line is for autorecon
+      seclists curl enum4linux feroxbuster impacket-scripts nbtscan nikto nmap onesixtyone oscanner redis-tools smbclient smbmap snmp sslscan sipvicious tnscmd10g whatweb wkhtmltopdf
       code \
       bash-completion \
       vim \
@@ -60,8 +62,9 @@ RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
       kali-linux-headless \
       kali-tools-top10 && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* \
-    git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng
+    rm -rf /var/lib/apt/lists/* && \
+    git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
+    gunzip /usr/share/wordlists/rockyou.txt.gz
 
 # OpenGL / MESA
 # adds 68 MB to image, disabled
