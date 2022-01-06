@@ -59,6 +59,7 @@ RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
       vim \
       terminator \
       iputils* \
+      kali-tweaks \
       kali-linux-headless \
       kali-tools-top10 && \
     apt-get clean && \
