@@ -43,8 +43,8 @@ RUN apt-get update && \
       lxmenu-data \
       lxtask \
       procps \
-      psmisc && \
-    apt-get install -y --no-install-recommends \
+      psmisc
+RUN apt-get install -y --no-install-recommends \
       bash-completion \
       vim \
       terminator \
