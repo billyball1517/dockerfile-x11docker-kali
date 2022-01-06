@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ENV DEBIAN_FRONTEND=readline
+
 # this is to reconfigure wireshark
 wget https://raw.githubusercontent.com/billyball1517/dockerfile-x11docker-lxde/master/wireshark-expect && \
 chmod +x wireshark-expect && \
