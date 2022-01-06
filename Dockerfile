@@ -44,15 +44,11 @@ RUN apt-get update && \
       lxtask \
       procps \
       psmisc \
-      apt-transport-https wget gpg \
+      software-properties-common apt-transport-https wget gpg \
       mesa-utils mesa-utils-extra libxv1 
 
-RUN wget https://packages.microsoft.com/keys/microsoft.asc && \
-    gpg --dearmor microsoft.asc > packages.microsoft.gpg && \
-    install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/ && \
-    sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list' && \
-    rm -f microsoft.asc && \
-    rm -f packages.microsoft.gpg && \
+RUN wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - && \
+    sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
     # this first line is for autorecon
