@@ -89,7 +89,9 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
     rm -rf /var/lib/apt/lists/*
     
 RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
-    gunzip /usr/share/wordlists/rockyou.txt.gz
+    gunzip /usr/share/wordlists/rockyou.txt.gz && \
+    service start postgresql && \
+    msfdb init
 
 # OpenGL / MESA
 # adds 68 MB to image, disabled
