@@ -69,7 +69,7 @@ RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
 
 # OpenGL / MESA
 # adds 68 MB to image, disabled
-# RUN apt-get install -y mesa-utils mesa-utils-extra libxv1 
+RUN apt-get install -y mesa-utils mesa-utils-extra libxv1 
 
 
 # GTK 2 and 3 settings for icons and style, wallpaper
