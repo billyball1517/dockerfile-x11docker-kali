@@ -48,6 +48,7 @@ RUN apt-get update && \
       mesa-utils mesa-utils-extra libxv1 
 
 RUN pkill -9 gpg-agent && \
+    source <(gpg-agent --daemon) && \
     wget -q https://packages.microsoft.com/keys/microsoft.asc && \
     apt-key add microsoft.asc && \
     add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" && \
