@@ -33,30 +33,38 @@ RUN echo "deb http://deb.debian.org/debian stable main non-free contrib" >> /etc
 
 COPY preferences /etc/apt/preferences
 
+# get the large base stuff out of the way
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+      kali-linux-headless \
+      kali-tools-top10 \
+      kali-desktop-lxde
+
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       policykit-1-gnome && \
     apt-get install -y --no-install-recommends \
       dbus-x11 \
-      kali-desktop-lxde \
       lxlauncher \
       lxmenu-data \
       lxtask \
       procps \
       psmisc \
+# this stuff is to add the ms repo
       software-properties-common apt-transport-https wget gpg gpg-agent \
+# this is just the commented out stuff below because who cares this image is massive lol
       mesa-utils mesa-utils-extra libxv1 
-
+   
 RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
     apt-key add microsoft.asc && \
     add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" && \
     rm -f microsoft.asc && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
-    # this first line is for autorecon
+# these next 2 lines are for autorecon
       seclists curl enum4linux feroxbuster impacket-scripts nbtscan nikto nmap onesixtyone oscanner redis-tools smbclient smbmap snmp sslscan sipvicious tnscmd10g whatweb wkhtmltopdf \
       python3-venv python3-pip \
-    # this one is for pyenv (see https://www.kali.org/docs/general-use/using-eol-python-versions/)
+# this one is for pyenv (see https://www.kali.org/docs/general-use/using-eol-python-versions/)
       build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git \
       code \
       bash-completion \
@@ -64,8 +72,8 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       terminator \
       iputils* \
       kali-tweaks \
-      kali-linux-headless \
-      kali-tools-top10 && \
+       \
+       && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
