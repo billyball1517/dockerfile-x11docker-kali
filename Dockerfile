@@ -91,7 +91,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
 #final configs
 RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     gunzip /usr/share/wordlists/rockyou.txt.gz && \
-    service start postgresql && \
+    service postgresql start && \
     msfdb init
 
 # OpenGL / MESA
@@ -147,8 +147,8 @@ echo 'x11docker/lxde: If the panel does not show an approbate menu\n\
 startlxde\n\
 " >/usr/local/bin/start && chmod +x /usr/local/bin/start
 
-#COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-#RUN chmod +x /usr/local/bin/entrypoint.sh
-#ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 CMD ["/usr/local/bin/start"]
