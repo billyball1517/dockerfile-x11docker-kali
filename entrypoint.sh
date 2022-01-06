@@ -21,7 +21,6 @@ addgroup user external-kvm
 addgroup user libvirt
 addgroup user qemu
 
-dockerd > /dev/null &
-libvirtd > /dev/null &
+service postgresql start
 
-exec /usr/bin/gosu user "$@"
+exec /usr/bin/gosu kali "$@"
