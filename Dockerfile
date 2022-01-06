@@ -50,6 +50,7 @@ RUN apt-get update && \
 RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
     apt-key add microsoft.asc && \
     add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" && \
+    rm -f microsoft.asc && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
     # this first line is for autorecon
