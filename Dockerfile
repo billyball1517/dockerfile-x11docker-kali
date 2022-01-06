@@ -44,6 +44,7 @@ RUN apt-get update && \
       lxtask \
       procps \
       psmisc
+
 RUN apt-get install -y --no-install-recommends \
       bash-completion \
       vim \
