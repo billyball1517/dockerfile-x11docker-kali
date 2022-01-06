@@ -8,8 +8,11 @@ chmod +x wireshark-expect
 ./wireshark-expect
 rm -f ./wireshark-expect
 
-useradd -m -G wireshark,sudo -s /bin/bash kali
+echo "GROUP=138" /etc/default/useradd
+
+# useradd -m -G wireshark,sudo -s /bin/bash kali
+
 
 service postgresql start
 
-exec /usr/sbin/gosu kali "$@"
+#exec /usr/sbin/gosu kali "$@"
