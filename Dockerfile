@@ -91,9 +91,10 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
 #final configs
 RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     gunzip /usr/share/wordlists/rockyou.txt.gz && \
-#    groupadd -g wireshark && \
-#    chgrp wireshark /usr/bin/dumpcap && \
-#    chmod 4750 /usr/bin/dumpcap && \
+# this is to reconfigure wireshark
+    wget https://raw.githubusercontent.com/billyball1517/dockerfile-x11docker-lxde/master/wireshark-expect && \
+    chmod +x wireshark-expect && \
+    ./wireshark-expect && \
     service postgresql start && \
     msfdb init
 
