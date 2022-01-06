@@ -88,11 +88,13 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+ENV DEBIAN_FRONTEND=readline
+
 #final configs
 RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     gunzip /usr/share/wordlists/rockyou.txt.gz && \
 # this is to reconfigure wireshark
-    dpkg-reconfigure wireshark-common -f readline && \
+# dpkg-reconfigure wireshark-common -f readline && \
     wget https://raw.githubusercontent.com/billyball1517/dockerfile-x11docker-lxde/master/wireshark-expect && \
     chmod +x wireshark-expect && \
     ./wireshark-expect && \
