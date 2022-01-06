@@ -46,6 +46,7 @@ RUN apt-get update && \
       psmisc && \
     apt-get install -y --no-install-recommends \
       bash-completion \
+      vim \
       terminator \
       kali-linux-headless \
       kali-tools-top10 && \
