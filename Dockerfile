@@ -100,7 +100,7 @@ RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     rm -f ./wireshark-expect && \
     service postgresql start && \
     msfdb init && \
-    adduser -D kali && \
+    adduser kali && \
     addgroup kali wireshark
 
 # OpenGL / MESA
