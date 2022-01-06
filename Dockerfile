@@ -27,6 +27,10 @@ FROM kalilinux/kali-last-release:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8 
+
 # Event the "stable" kali repos often have breakages so we add debian stable as a backstop
 
 RUN echo "deb http://deb.debian.org/debian stable main non-free contrib" >> /etc/apt/sources.list
