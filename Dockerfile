@@ -33,13 +33,6 @@ RUN echo "deb http://deb.debian.org/debian stable main non-free contrib" >> /etc
 
 COPY preferences /etc/apt/preferences
 
-# get the large base stuff out of the way
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-      kali-linux-headless \
-      kali-tools-top10 \
-      kali-desktop-lxde
-
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       policykit-1-gnome && \
@@ -54,7 +47,14 @@ RUN apt-get update && \
       software-properties-common apt-transport-https wget gpg gpg-agent \
 # this is just the commented out stuff below because who cares this image is massive lol
       mesa-utils mesa-utils-extra libxv1 
-   
+
+# get the large base stuff out of the way
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+      kali-linux-headless \
+      kali-tools-top10 \
+      kali-desktop-lxde
+
 RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
     apt-key add microsoft.asc && \
     add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" && \
