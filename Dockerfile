@@ -93,11 +93,6 @@ ENV DEBIAN_FRONTEND=readline
 #final configs
 RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     gunzip /usr/share/wordlists/rockyou.txt.gz && \
-# this is to reconfigure wireshark
-    wget https://raw.githubusercontent.com/billyball1517/dockerfile-x11docker-lxde/master/wireshark-expect && \
-    chmod +x wireshark-expect && \
-    ./wireshark-expect && \
-    rm -f ./wireshark-expect && \
     service postgresql start && \
     msfdb init
 
