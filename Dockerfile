@@ -55,6 +55,7 @@ RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
     apt-get install -y --no-install-recommends \
     # this first line is for autorecon
       seclists curl enum4linux feroxbuster impacket-scripts nbtscan nikto nmap onesixtyone oscanner redis-tools smbclient smbmap snmp sslscan sipvicious tnscmd10g whatweb wkhtmltopdf \
+      python3-venv python3-pip \
       code \
       bash-completion \
       vim \
