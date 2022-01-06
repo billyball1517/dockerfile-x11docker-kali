@@ -56,7 +56,9 @@ RUN apt-get update && \
 # this stuff is to add the ms repo
       software-properties-common apt-transport-https wget gpg gpg-agent \
 # this is just the commented out stuff below because who cares this image is massive lol
-      mesa-utils mesa-utils-extra libxv1 
+      mesa-utils mesa-utils-extra libxv1 \
+# this is for image mangement/troublshooting
+      xauth gosu
 
 # get the large base stuff out of the way
 RUN apt-get update && \
