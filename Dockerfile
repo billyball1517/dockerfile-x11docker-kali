@@ -44,7 +44,7 @@ RUN apt-get update && \
       lxtask \
       procps \
       psmisc \
-      software-properties-common apt-transport-https wget gpg \
+      software-properties-common apt-transport-https wget gpg gpg-agent \
       mesa-utils mesa-utils-extra libxv1 
 
 RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
