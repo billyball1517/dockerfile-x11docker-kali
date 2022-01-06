@@ -35,7 +35,7 @@ COPY preferences /etc/apt/preferences
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-      policykit-1-gnome && \
+      policykit-1-gnome gsettings-desktop-schemas && \
     apt-get install -y --no-install-recommends \
       dbus-x11 \
       lxde \
