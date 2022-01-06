@@ -44,6 +44,11 @@ RUN apt-get update && \
       lxtask \
       procps \
       psmisc && \
+    apt-get install -y --no-install-recommends \
+      bash-completion \
+      terminator \
+      kali-linux-headless \
+      kali-tools-top10 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
