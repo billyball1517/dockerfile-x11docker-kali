@@ -95,6 +95,8 @@ RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     gunzip /usr/share/wordlists/rockyou.txt.gz && \
     service postgresql start && \
     msfdb init && \
+    update-rc.d postgresql defaults && \
+# I know this script is messy but it's on debian for making such a crappy package configuration tool    
     wget https://raw.githubusercontent.com/billyball1517/dockerfile-x11docker-lxde/master/wireshark-expect && \
     chmod +x wireshark-expect && \
     ./wireshark-expect && \
