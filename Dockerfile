@@ -99,6 +99,7 @@ RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     chmod +x wireshark-expect && \
     ./wireshark-expect && \
     rm -f ./wireshark-expect && \
+    mkdir /dev/net && \
     mknod /dev/net/tun c 10 20
 
 # OpenGL / MESA
