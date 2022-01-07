@@ -93,6 +93,7 @@ ENV DEBIAN_FRONTEND=readline
 
 #final configs
 RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
+    wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -P /opt/PEASS-ng/linPEAS/ && \
     gunzip /usr/share/wordlists/rockyou.txt.gz && \
     systemctl enable postgresql && \
     service postgresql start && \
