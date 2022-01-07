@@ -26,6 +26,9 @@
 FROM kalilinux/kali-last-release:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
+ENV LC_ALL en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
 
 # Even the "stable" kali repos often have breakages so we add debian stable as a backstop
 
@@ -33,14 +36,10 @@ RUN echo "deb http://deb.debian.org/debian stable main non-free contrib" >> /etc
 
 COPY preferences /etc/apt/preferences
 
-RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
-
 RUN apt-get update && \
+    apt-get install -y --no-install-recommends apt-utils && \
+    apt-get update && \
     apt-get install -y locales locales-all
-
-ENV LC_ALL en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US.UTF-8
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
