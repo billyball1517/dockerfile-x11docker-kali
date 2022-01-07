@@ -93,8 +93,8 @@ ENV DEBIAN_FRONTEND=readline
 #final configs
 RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     gunzip /usr/share/wordlists/rockyou.txt.gz && \
-    service postgresql start && \
     update-rc.d postgresql defaults && \
+    service postgresql start && \
     msfdb init && \
 # I know this script is messy but it's on debian for making such a crappy package configuration tool    
     wget https://raw.githubusercontent.com/billyball1517/dockerfile-x11docker-lxde/master/wireshark-expect && \
