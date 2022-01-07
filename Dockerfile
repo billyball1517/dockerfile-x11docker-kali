@@ -94,7 +94,7 @@ ENV DEBIAN_FRONTEND=readline
 RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     gunzip /usr/share/wordlists/rockyou.txt.gz && \
     systemctl enable postgresql && \
-    /etc/init.d/postgresql start && \
+#    /etc/init.d/postgresql start && \
 #    service postgresql start && \
     msfdb init && \
 # I know this script is messy but it's on debian for making such a crappy package configuration tool    
