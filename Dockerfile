@@ -84,6 +84,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       vim \
       terminator \
       iputils* \
+      man-db \
       kali-tweaks && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
