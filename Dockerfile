@@ -93,7 +93,7 @@ ENV DEBIAN_FRONTEND=readline
 #final configs
 RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     gunzip /usr/share/wordlists/rockyou.txt.gz && \
-    systemctl enable --now postgresql && \
+    systemctl enable postgresql && \
     /etc/init.d/postgresql start && \
 #    service postgresql start && \
     msfdb init && \
