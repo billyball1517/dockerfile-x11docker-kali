@@ -79,7 +79,6 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       python3-venv python3-pip \
 # this one is for pyenv (see https://www.kali.org/docs/general-use/using-eol-python-versions/)
       build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git \
-      bloodhound \
       code \
       bash-completion \
       vim \
@@ -102,9 +101,7 @@ RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     wget https://raw.githubusercontent.com/billyball1517/dockerfile-x11docker-lxde/master/wireshark-expect && \
     chmod +x wireshark-expect && \
     ./wireshark-expect && \
-    rm -f ./wireshark-expect && \
-    wget https://raw.githubusercontent.com/billyball1517/dockerfile-x11docker-lxde/master/neo4j.service -P /usr/lib/systemd/system/ && \
-    systemctl enable neo4j
+    rm -f ./wireshark-expect \
 
 # OpenGL / MESA
 # adds 68 MB to image, disabled
