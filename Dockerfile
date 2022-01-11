@@ -120,7 +120,7 @@ RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     wget https://go.dev/dl/$(curl "https://go.dev/VERSION?m=text").linux-amd64.tar.gz && \
     tar -C /usr/local -xzf $(curl "https://go.dev/VERSION?m=text").linux-amd64.tar.gz && \
     rm -f $(curl "https://go.dev/VERSION?m=text").linux-amd64.tar.gz && \
-    echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/profile.d/golang.sh
+    echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/profile
     
 
 # OpenGL / MESA
