@@ -71,8 +71,12 @@ RUN apt-get update && \
 # misc crap
 RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
     apt-key add microsoft.asc && \
-    add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" && \
+    add-apt-repository "deb https://packages.microsoft.com/repos/vscode stable main" && \
     rm -f microsoft.asc && \
+    wget -q https://debian.neo4j.com/neotechnology.gpg.key && \
+    apt-key add neotechnology.gpg.key && \
+    add-apt-repository "deb https://debian.neo4j.com stable latest" && \
+    rm -f neotechnology.gpg.key && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
 # these next 2 lines are for autorecon
@@ -81,6 +85,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
 # this one is for pyenv (see https://www.kali.org/docs/general-use/using-eol-python-versions/)
       build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git \
       code \
+      neo4j
       bash-completion \
       vim \
       terminator \
