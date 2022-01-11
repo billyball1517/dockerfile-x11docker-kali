@@ -85,7 +85,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
 # this one is for pyenv (see https://www.kali.org/docs/general-use/using-eol-python-versions/)
       build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git \
       code \
-      neo4j
+      bloodhound \
       bash-completion \
       vim \
       terminator \
