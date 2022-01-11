@@ -90,6 +90,8 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git \
       code \
       bloodhound \
+# I find the version of golang in the kali apt repo to be new enough, rather than trying to install manually
+      golang \
       bash-completion \
       vim \
       terminator \
