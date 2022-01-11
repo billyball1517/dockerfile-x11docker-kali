@@ -113,8 +113,8 @@ RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     chmod +x wireshark-expect && \
     ./wireshark-expect && \
     rm -f ./wireshark-expect && \
-    neo4j-admin set-initial-password neo4j && \
-    systemctl enable neo4j
+    systemctl enable neo4j && \
+    neo4j-admin set-initial-password neo4j
 
 # OpenGL / MESA
 # adds 68 MB to image, disabled
