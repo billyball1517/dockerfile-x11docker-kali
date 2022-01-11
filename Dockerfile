@@ -115,6 +115,7 @@ RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     ./wireshark-expect && \
     rm -f ./wireshark-expect && \
     systemctl enable neo4j && \
+    service neo4j start && \
     neo4j-admin set-initial-password neo4j && \
 # This is a neat trick to get the latest stable version of golang
     export env LatestGoVersion=$(curl "https://go.dev/VERSION?m=text") && \
