@@ -83,7 +83,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
 # these next 2 lines are for autorecon
-      sudo apt install seclists curl enum4linux feroxbuster impacket-scripts nbtscan nikto nmap onesixtyone oscanner redis-tools smbclient smbmap snmp sslscan sipvicious tnscmd10g whatweb wkhtmltopdf \
+      seclists curl enum4linux feroxbuster impacket-scripts nbtscan nikto nmap onesixtyone oscanner redis-tools smbclient smbmap snmp sslscan sipvicious tnscmd10g whatweb wkhtmltopdf \
       gobuster \
       python3-venv python3-pip \
 # this one is for pyenv (see https://www.kali.org/docs/general-use/using-eol-python-versions/)
