@@ -68,6 +68,9 @@ RUN apt-get update && \
       kali-tools-top10 \
       kali-desktop-lxde
 
+#neo4j packaged by kali cannot be enabled as a service, this may be redundant in the future
+COPY neo4j /etc/apt/preferences.d/neo4j
+
 # misc crap
 RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
     apt-key add microsoft.asc && \
@@ -109,7 +112,8 @@ RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     wget https://raw.githubusercontent.com/billyball1517/dockerfile-x11docker-lxde/master/wireshark-expect && \
     chmod +x wireshark-expect && \
     ./wireshark-expect && \
-    rm -f ./wireshark-expect
+    rm -f ./wireshark-expect && \
+    systemctl enable neo4j
 
 # OpenGL / MESA
 # adds 68 MB to image, disabled
