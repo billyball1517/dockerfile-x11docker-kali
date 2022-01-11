@@ -119,9 +119,9 @@ RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
 # This is a neat trick to get the latest stable version of golang
     wget https://go.dev/dl/$(curl "https://go.dev/VERSION?m=text").linux-amd64.tar.gz && \
     tar -C /usr/local -xzf $(curl "https://go.dev/VERSION?m=text").linux-amd64.tar.gz && \
-    rm -f $(curl "https://go.dev/VERSION?m=text").linux-amd64.tar.gz && \
-    echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/profile
-    
+    rm -f $(curl "https://go.dev/VERSION?m=text").linux-amd64.tar.gz
+
+ENV ENV="export PATH=$PATH:/usr/local/go/bin"
 
 # OpenGL / MESA
 # adds 68 MB to image, disabled
