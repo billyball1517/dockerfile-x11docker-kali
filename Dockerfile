@@ -82,7 +82,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
     rm -f neotechnology.gpg.key && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
-# these next 2 lines are for autorecon
+# these next 3 lines are for autorecon
       seclists curl enum4linux feroxbuster impacket-scripts nbtscan nikto nmap onesixtyone oscanner redis-tools smbclient smbmap snmp sslscan sipvicious tnscmd10g whatweb wkhtmltopdf \
       gobuster \
       python3-venv python3-pip \
