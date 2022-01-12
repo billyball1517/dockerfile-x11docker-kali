@@ -103,7 +103,8 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
 ENV DEBIAN_FRONTEND=readline
 
 #final configs
-RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
+RUN echo 'PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\'\\n\''}history -a; history -c; history -r"' >> /etc/skel/.bashrc
+    git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -P /opt/PEASS-ng/linPEAS/ && \
     gunzip /usr/share/wordlists/rockyou.txt.gz && \
     systemctl enable postgresql && \
