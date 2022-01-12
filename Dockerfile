@@ -123,8 +123,7 @@ RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     wget https://bootstrap.pypa.io/pip/2.7/get-pip.py  && \
     python2 get-pip.py && \
     rm -f get-pip.py && \
-    python2 -m pip install 
-
+    python2 -m pip install pyftpdlib
 
 # OpenGL / MESA
 # adds 68 MB to image, disabled
