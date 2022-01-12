@@ -117,6 +117,8 @@ RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     systemctl enable neo4j && \
     service neo4j start && \
     neo4j-admin set-initial-password neo4j && \
+    update-alternatives --install /usr/bin/python python /usr/bin/python3 2 && \
+    update-alternatives --install /usr/bin/python python /usr/bin/python2 1 && \
     wget https://bootstrap.pypa.io/pip/2.7/get-pip.py  && \
     python2 get-pip.py && \
     rm -f get-pip.py && \
