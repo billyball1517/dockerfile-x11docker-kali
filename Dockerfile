@@ -124,21 +124,9 @@ RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     tar -C /usr/local -xzf "$LatestGoVersion".linux-amd64.tar.gz && \
     rm -f "$LatestGoVersion".linux-amd64.tar.gz && \
     echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/skel/.bashrc && \
-# pyenv is the futureproof way of using python2       
-    wget https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer && \
-    chmod +x pyenv-installer && \
-    ./pyenv-installer && \
-    rm -f pyenv-installer && \
-    /root/.pyenv/bin/pyenv install 2.7.18 && \
-    /root/.pyenv/bin/pyenv global 2.7.18 && \
-    /root/.pyenv/shims/pip install --user --upgrade pip && \
-    /root/.pyenv/shims/pip install --user pyftpdlib && \
-    /root/.pyenv/shims/pip install --user mitm6 && \
-    mv /root/.pyenv /etc/skel && \
-    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> /etc/skel/.bashrc && \
-    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> /etc/skel/.bashrc && \
-    echo 'eval "$(pyenv init --path)"' >> /etc/skel/.bashrc && \
-    echo 'eval "$(pyenv init -)"' >> /etc/skel/.bashrc
+    wget https://bootstrap.pypa.io/pip/2.7/get-pip.py  && \
+    python2 get-pip.py && \
+    rm -f get-pip.py
 
 
 # OpenGL / MESA
