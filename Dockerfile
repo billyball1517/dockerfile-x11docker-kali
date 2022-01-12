@@ -122,7 +122,8 @@ RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     neo4j-admin set-initial-password neo4j && \
     wget https://bootstrap.pypa.io/pip/2.7/get-pip.py  && \
     python2 get-pip.py && \
-    rm -f get-pip.py
+    rm -f get-pip.py && \
+    python2 -m pip install 
 
 
 # OpenGL / MESA
