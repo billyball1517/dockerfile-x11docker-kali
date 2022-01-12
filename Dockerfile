@@ -96,7 +96,6 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       iputils* \
       man-db \
       less \
-      wget \
       curl \
       git \
       kali-tweaks && \
