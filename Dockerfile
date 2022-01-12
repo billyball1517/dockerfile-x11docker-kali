@@ -90,6 +90,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git \
       code \
       bloodhound \
+      golang \
       python2 \
       bash-completion \
       vim \
@@ -118,12 +119,6 @@ RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     systemctl enable neo4j && \
     service neo4j start && \
     neo4j-admin set-initial-password neo4j && \
-# This is a neat trick to get the latest stable version of golang
-    export env LatestGoVersion=$(curl "https://go.dev/VERSION?m=text") && \
-    wget https://go.dev/dl/"$LatestGoVersion".linux-amd64.tar.gz && \
-    tar -C /usr/local -xzf "$LatestGoVersion".linux-amd64.tar.gz && \
-    rm -f "$LatestGoVersion".linux-amd64.tar.gz && \
-    echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/skel/.bashrc && \
     wget https://bootstrap.pypa.io/pip/2.7/get-pip.py  && \
     python2 get-pip.py && \
     rm -f get-pip.py
