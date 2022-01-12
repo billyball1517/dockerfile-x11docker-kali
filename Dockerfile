@@ -85,7 +85,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
 # these next 3 lines are for autorecon
       seclists curl enum4linux feroxbuster impacket-scripts nbtscan nikto nmap onesixtyone oscanner redis-tools smbclient smbmap snmp sslscan sipvicious tnscmd10g whatweb wkhtmltopdf \
       gobuster \
-      python3-venv python3-pip \
+      python3-pip \
       code \
       bloodhound \
       golang \
@@ -122,7 +122,8 @@ RUN git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     wget https://bootstrap.pypa.io/pip/2.7/get-pip.py  && \
     python2 get-pip.py && \
     rm -f get-pip.py && \
-    python2 -m pip install pyftpdlib
+    python2 -m pip install pyftpdlib && \
+    python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git
 
 # OpenGL / MESA
 # adds 68 MB to image, disabled
