@@ -86,8 +86,6 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       seclists curl enum4linux feroxbuster impacket-scripts nbtscan nikto nmap onesixtyone oscanner redis-tools smbclient smbmap snmp sslscan sipvicious tnscmd10g whatweb wkhtmltopdf \
       gobuster \
       python3-venv python3-pip \
-# this one is for pyenv (see https://www.kali.org/docs/general-use/using-eol-python-versions/)
-      build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git \
       code \
       bloodhound \
       golang \
