@@ -48,7 +48,7 @@ RUN apt-get update && \
       policykit-1-gnome gsettings-desktop-schemas && \
     apt-get install -y --no-install-recommends \
       dbus-x11 \
-      lxde \
+      kali-desktop-lxde \
       lxlauncher \
       lxmenu-data \
       lxtask \
@@ -56,7 +56,7 @@ RUN apt-get update && \
       psmisc \
 # this stuff is to add the 3rd party repos
       software-properties-common apt-transport-https wget gpg gpg-agent \
-# this is just the commented out stuff below because who cares this image is massive lol
+# this is for gpu support (experimental)
       mesa-utils mesa-utils-extra libxv1 \
 # this is for image mangement/troublshooting
       xauth gosu
@@ -65,8 +65,7 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       kali-linux-headless \
-      kali-tools-top10 \
-      kali-desktop-lxde
+      kali-tools-top10
 
 #neo4j packaged by kali cannot be enabled as a service, this may be redundant in the future
 COPY neo4j /etc/apt/preferences.d/neo4j
@@ -127,51 +126,6 @@ RUN echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}h
     rm -f get-pip.py && \
     python2 -m pip install pyftpdlib && \
     python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git
-
-# OpenGL / MESA
-# adds 68 MB to image, disabled
-# RUN apt-get install -y mesa-utils mesa-utils-extra libxv1 
-
-
-# GTK 2 and 3 settings for icons and style, wallpaper
-#RUN echo '\n\
-#gtk-theme-name="Raleigh"\n\
-#gtk-icon-theme-name="nuoveXT2"\n\
-#' > /etc/skel/.gtkrc-2.0 && \
-#\
-#mkdir -p /etc/skel/.config/gtk-3.0 && \
-#echo '\n\
-#[Settings]\n\
-#gtk-theme-name="Raleigh"\n\
-#gtk-icon-theme-name="nuoveXT2"\n\
-#' > /etc/skel/.config/gtk-3.0/settings.ini && \
-#\
-#mkdir -p /etc/skel/.config/pcmanfm/LXDE && \
-#echo '\n\
-#[*]\n\
-#wallpaper_mode=stretch\n\
-#wallpaper_common=1\n\
-#wallpaper=/usr/share/lxde/wallpapers/lxde_blue.jpg\n\
-#' > /etc/skel/.config/pcmanfm/LXDE/desktop-items-0.conf && \
-#\
-#mkdir -p /etc/skel/.config/libfm && \
-#echo '\n\
-#[config]\n\
-#quick_exec=1\n\
-#terminal=lxterminal\n\
-#' > /etc/skel/.config/libfm/libfm.conf && \
-#\
-#mkdir -p /etc/skel/.config/openbox/ && \
-#echo '<?xml version="1.0" encoding="UTF-8"?>\n\
-#<theme>\n\
-#  <name>Clearlooks</name>\n\
-#</theme>\n\
-#' > /etc/skel/.config/openbox/lxde-rc.xml && \
-#\
-#mkdir -p /etc/skel/.config/ && \
-#echo '[Added Associations]\n\
-#text/plain=mousepad.desktop;\n\
-#' > /etc/skel/.config/mimeapps.list
 
 RUN echo "#! /bin/bash\n\
 echo 'x11docker/lxde: If the panel does not show an approbate menu\n\
