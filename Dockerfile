@@ -102,8 +102,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
 ENV DEBIAN_FRONTEND=readline
 
 #final configs
-RUN echo "HISTFILE=/tmp/.bash_history" >> /etc/skel/.bashrc && \
-    echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}history -a; history -c; history -r"' >> /etc/skel/.bashrc && \
+RUN echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}history -a; history -c; history -r"' >> /etc/skel/.bashrc && \
     echo 'export GOPATH=$HOME/go' >> /etc/skel/.bashrc && \
     echo 'export PATH=$PATH:$GOPATH/bin' >> /etc/skel/.bashrc && \
     git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
