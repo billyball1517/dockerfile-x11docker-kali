@@ -54,7 +54,7 @@ RUN apt-get update && \
       lxtask \
       procps \
       psmisc \
-# this stuff is to add the ms repo
+# this stuff is to add the 3rd party repos
       software-properties-common apt-transport-https wget gpg gpg-agent \
 # this is just the commented out stuff below because who cares this image is massive lol
       mesa-utils mesa-utils-extra libxv1 \
