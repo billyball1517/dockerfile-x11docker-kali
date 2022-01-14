@@ -101,9 +101,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
 
 ENV DEBIAN_FRONTEND=readline
 
-RUN pwd
-
-#ADD wireshark-expect
+COPY wireshark-expect /wireshark-expect
 
 #final configs
 RUN echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}history -a; history -c; history -r"' >> /etc/skel/.bashrc && \
