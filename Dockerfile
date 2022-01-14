@@ -101,6 +101,8 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
 
 ENV DEBIAN_FRONTEND=readline
 
+COPY wireshark-expect
+
 #final configs
 RUN echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}history -a; history -c; history -r"' >> /etc/skel/.bashrc && \
     echo 'export GOPATH=$HOME/go' >> /etc/skel/.bashrc && \
@@ -112,8 +114,7 @@ RUN echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}h
     service postgresql start && \
     msfdb init && \
 # I know this script is messy but it's on debian for making such a crappy package configuration tool    
-    wget https://raw.githubusercontent.com/billyball1517/dockerfile-x11docker-lxde/master/wireshark-expect && \
-    chmod +x wireshark-expect && \
+    chmod +x ./wireshark-expect && \
     ./wireshark-expect && \
     rm -f ./wireshark-expect && \
     systemctl enable neo4j && \
