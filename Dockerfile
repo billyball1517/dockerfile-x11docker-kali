@@ -101,6 +101,8 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
 
 ENV DEBIAN_FRONTEND=readline
 
+RUN pwd
+
 ADD wireshark-expect
 
 #final configs
