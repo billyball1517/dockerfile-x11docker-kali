@@ -64,8 +64,7 @@ RUN apt-get update && \
 # get the large base stuff out of the way
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-      kali-linux-headless \
-      kali-tools-top10
+      kali-linux-default
 
 #neo4j packaged by kali cannot be enabled as a service, this may be redundant in the future
 COPY neo4j /etc/apt/preferences.d/neo4j
