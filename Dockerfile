@@ -126,7 +126,7 @@ RUN echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}h
     python2 -m pip install pyftpdlib && \
     python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git
 
-RUN useradd -u 9001 -G wireshark kali
+RUN useradd -u 9001 -m -G wireshark -s /bin/bash kali
 
 RUN echo "#! /bin/bash\n\
 echo 'x11docker/lxde: If the panel does not show an approbate menu\n\
