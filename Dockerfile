@@ -136,6 +136,4 @@ echo 'x11docker/lxde: If the panel does not show an approbate menu\n\
 startlxde\n\
 " >/usr/local/bin/start && chmod +x /usr/local/bin/start
 
-USER kali
-
 CMD ["/usr/local/bin/start"]
