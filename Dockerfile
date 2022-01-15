@@ -126,6 +126,8 @@ RUN echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}h
     python2 -m pip install pyftpdlib && \
     python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git
 
+RUN useradd -u 9001 -G sudo,systemd-journal,wireshark kali
+
 RUN echo "#! /bin/bash\n\
 echo 'x11docker/lxde: If the panel does not show an approbate menu\n\
   and you encounter high CPU usage (seen with kata-runtime),\n\
@@ -133,5 +135,7 @@ echo 'x11docker/lxde: If the panel does not show an approbate menu\n\
 ' >&2 \n\
 startlxde\n\
 " >/usr/local/bin/start && chmod +x /usr/local/bin/start
+
+USER kali
 
 CMD ["/usr/local/bin/start"]
