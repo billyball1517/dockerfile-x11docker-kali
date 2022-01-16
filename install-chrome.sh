@@ -13,11 +13,11 @@ install_chrome_extension () {
 
 if ! which "google-chrome" ; then
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub \
-  | sudo apt-key add -
+  | apt-key add -
   echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' \
-  | sudo tee /etc/apt/sources.list.d/google-chrome.list
-  sudo apt-get update
-  sudo apt install google-chrome-stable
+  | tee /etc/apt/sources.list.d/google-chrome.list
+  apt-get update
+  apt-get install -y --no-install-recommends install google-chrome-stable
 else
   echo Chrome already installed
 fi
