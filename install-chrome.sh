@@ -17,7 +17,7 @@ if ! which "google-chrome" ; then
   echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' \
   | tee /etc/apt/sources.list.d/google-chrome.list
   apt-get update
-  apt-get install -y --no-install-recommends install google-chrome-stable
+  apt-get install -y --no-install-recommends google-chrome-stable
 else
   echo Chrome already installed
 fi
