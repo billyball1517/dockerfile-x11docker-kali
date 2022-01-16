@@ -22,7 +22,5 @@ else
   echo Chrome already installed
 fi
 
-install_chrome_extension "cfhdojbkjhnklbpkdaibdccddilifddb" "adblock plus"
-install_chrome_extension "fmkadmapgofadopljbjfkapdkoienihi" "react dev tools"
-install_chrome_extension "anmidgajdonkgmmilbccfefkfieajakd" "save pinned tabs"
-install_chrome_extension "dbepggeogbaibhgnhhndojpepiihcmeb" "vimium"
+install_chrome_extension "dookpfaalaaappcdneeahomimbllocnb" "foxyproxy-basic"
+install_chrome_extension "hlkenndednhfkekhgcdicdfddnkalmdm" "cookie-editor"
