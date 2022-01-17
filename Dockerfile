@@ -60,7 +60,7 @@ RUN apt-get update && \
 # this stuff is to add the 3rd party repos
       software-properties-common apt-transport-https wget gpg gpg-agent \
 # this is for gpu support (experimental)
-      mesa-utils mesa-utils-extra libxv1 \
+      mesa-utils mesa-utils-extra libxv1 && \
 # this is for image mangement/troublshooting
 #      xauth gosu && \
     apt-get clean && \
