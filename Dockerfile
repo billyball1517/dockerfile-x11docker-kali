@@ -43,6 +43,12 @@ ENV LANGUAGE en_US.UTF-8
 RUN apt-get update && \
     apt-get install -y locales locales-all
 
+COPY install-chrome.sh /install-chrome.sh
+
+RUN chmod +x ./install-chrome.sh
+    ./install-chrome.sh
+    rm -f ./install-chrome.sh
+
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       policykit-1-gnome gsettings-desktop-schemas && \
