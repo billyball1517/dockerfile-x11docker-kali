@@ -34,20 +34,26 @@ RUN echo "deb http://deb.debian.org/debian stable main non-free contrib" >> /etc
 COPY preferences /etc/apt/preferences
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends apt-utils
+    apt-get install -y --no-install-recommends apt-utils && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 
 RUN apt-get update && \
-    apt-get install -y locales locales-all
+    apt-get install -y locales locales-all && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 COPY install-chrome.sh /install-chrome.sh
 
-RUN chmod +x ./install-chrome.sh
-    ./install-chrome.sh
-    rm -f ./install-chrome.sh
+RUN chmod +x ./install-chrome.sh && \
+    ./install-chrome.sh && \
+    rm -f ./install-chrome.sh && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -65,12 +71,16 @@ RUN apt-get update && \
 # this is for gpu support (experimental)
       mesa-utils mesa-utils-extra libxv1 \
 # this is for image mangement/troublshooting
-      xauth gosu
+      xauth gosu && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # get the large base stuff out of the way
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-      kali-linux-default
+      kali-linux-default && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 #neo4j packaged by kali cannot be enabled as a service, this may be redundant in the future
 COPY neo4j /etc/apt/preferences.d/neo4j
