@@ -47,20 +47,11 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-COPY install-chrome.sh /install-chrome.sh
-
-RUN chmod +x ./install-chrome.sh && \
-    ./install-chrome.sh && \
-    rm -f ./install-chrome.sh && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       policykit-1-gnome gsettings-desktop-schemas && \
     apt-get install -y --no-install-recommends \
       dbus-x11 \
-      kali-desktop-lxde \
       lxlauncher \
       lxmenu-data \
       lxtask \
@@ -75,9 +66,18 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+COPY install-chrome.sh /install-chrome.sh
+
+RUN chmod +x ./install-chrome.sh && \
+    ./install-chrome.sh && \
+    rm -f ./install-chrome.sh && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 # get the large base stuff out of the way
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
+      kali-desktop-lxde \
       kali-linux-default && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
