@@ -49,20 +49,12 @@ RUN apt-get update && \
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-#      policykit-1-gnome gsettings-desktop-schemas && \
-#    apt-get install -y --no-install-recommends \
-#      dbus-x11 \
-#      lxlauncher \
-#      lxmenu-data \
-#      lxtask \
-#      procps \
-#      psmisc \
+# install terminator so it's the default x terminal emulator
+      terminator \
 # this stuff is to add the 3rd party repos
       software-properties-common apt-transport-https wget gpg gpg-agent \
 # this is for gpu support (experimental)
       mesa-utils mesa-utils-extra libxv1 && \
-# this is for image mangement/troublshooting
-#      xauth gosu && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -105,7 +97,6 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       python2 \
       bash-completion \
       vim \
-      terminator \
       iputils* \
       man-db \
       less \
