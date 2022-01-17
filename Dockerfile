@@ -49,20 +49,20 @@ RUN apt-get update && \
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-      policykit-1-gnome gsettings-desktop-schemas && \
-    apt-get install -y --no-install-recommends \
-      dbus-x11 \
-      lxlauncher \
-      lxmenu-data \
-      lxtask \
-      procps \
-      psmisc \
+#      policykit-1-gnome gsettings-desktop-schemas && \
+#    apt-get install -y --no-install-recommends \
+#      dbus-x11 \
+#      lxlauncher \
+#      lxmenu-data \
+#      lxtask \
+#      procps \
+#      psmisc \
 # this stuff is to add the 3rd party repos
       software-properties-common apt-transport-https wget gpg gpg-agent \
 # this is for gpu support (experimental)
       mesa-utils mesa-utils-extra libxv1 \
 # this is for image mangement/troublshooting
-      xauth gosu && \
+#      xauth gosu && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -77,7 +77,7 @@ RUN chmod +x ./install-chrome.sh && \
 # get the large base stuff out of the way
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-      kali-desktop-lxde \
+      kali-desktop-xfce \
       kali-linux-default && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -153,7 +153,7 @@ echo 'x11docker/lxde: If the panel does not show an approbate menu\n\
   and you encounter high CPU usage (seen with kata-runtime),\n\
   please run with option --init=systemd.\n\
 ' >&2 \n\
-startlxde\n\
+startxfce4\n\
 " >/usr/local/bin/start && chmod +x /usr/local/bin/start
 
 CMD ["/usr/local/bin/start"]
