@@ -49,8 +49,6 @@ RUN apt-get update && \
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-# install terminator so it's the default x terminal emulator
-      terminator \
 # this stuff is to add the 3rd party repos
       software-properties-common apt-transport-https wget gpg gpg-agent \
 # this is for gpu support (experimental)
@@ -97,6 +95,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       python2 \
       bash-completion \
       vim \
+      terminator \
       iputils* \
       man-db \
       less \
