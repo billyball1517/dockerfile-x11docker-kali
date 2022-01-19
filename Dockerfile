@@ -129,6 +129,7 @@ RUN echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}h
     cp /etc/i3/config /etc/skel/.config/i3/config && \
     sed -i '$d' /etc/skel/.config/i3/config && \
     echo 'exec --no-startup-id feh --bg-scale /etc/alternatives/desktop-background' >>  /etc/skel/.config/i3/config && \
+    echo 'exec_always --no-startup-id autotiling' >>  /etc/skel/.config/i3/config && \
     git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -P /opt/PEASS-ng/linPEAS/ && \
     gunzip /usr/share/wordlists/rockyou.txt.gz && \
@@ -148,7 +149,8 @@ RUN echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}h
     python2 get-pip.py && \
     rm -f get-pip.py && \
     python2 -m pip install pyftpdlib && \
-    python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git
+    python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git && \
+    python3 -m pip install autotiling
     
 RUN useradd -u 9001 -m -G wireshark -s /bin/bash kali
 
