@@ -124,7 +124,7 @@ RUN echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}h
     wget https://gitlab.com/Arszilla/kali-i3_gaps/-/raw/main/kali-config/common/includes.chroot/etc/skel/.config/i3/config -P /etc/skel/.config/i3/ && \
     mkdir /etc/skel/.config/i3status && \
     wget https://gitlab.com/Arszilla/kali-i3_gaps/-/raw/main/kali-config/common/includes.chroot/etc/skel/.config/i3status/i3status.conf -P /etc/skel/.config/i3status/ && \
-    wget https://gitlab.com/Arszilla/kali-i3_gaps/-/raw/main/kali-config/common/includes.chroot/etc/skel/.Xresourcess -P /etc/skel/ && \
+    wget https://gitlab.com/Arszilla/kali-i3_gaps/-/raw/main/kali-config/common/includes.chroot/etc/skel/.Xresources -P /etc/skel/ && \
     git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -P /opt/PEASS-ng/linPEAS/ && \
     gunzip /usr/share/wordlists/rockyou.txt.gz && \
