@@ -141,6 +141,13 @@ RUN echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}h
     python2 -m pip install pyftpdlib && \
     python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git
 
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+      lxsession && \
+    sed -i 's/openbox-lxde/i3/g' /etc/xdg/lxsession/LXDE/desktop.conf && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+    
 RUN useradd -u 9001 -m -G wireshark -s /bin/bash kali
 
 RUN echo "#! /bin/bash\n\
@@ -148,7 +155,7 @@ echo 'x11docker/lxde: If the panel does not show an approbate menu\n\
   and you encounter high CPU usage (seen with kata-runtime),\n\
   please run with option --init=systemd.\n\
 ' >&2 \n\
-i3\n\
+lxsession\n\
 " >/usr/local/bin/start && chmod +x /usr/local/bin/start
 
 CMD ["/usr/local/bin/start"]
