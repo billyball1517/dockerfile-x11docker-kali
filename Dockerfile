@@ -99,6 +99,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       iputils* \
       man-db \
       less \
+      freerdp2-x11 \
       kali-tweaks && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
