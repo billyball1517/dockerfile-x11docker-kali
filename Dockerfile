@@ -144,7 +144,7 @@ RUN echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}h
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       lxsession && \
-    sed -i 's/openbox-lxde/i3/g' /etc/xdg/lxsession/LXDE/desktop.conf && \
+#    sed -i 's/openbox-lxde/i3/g' /etc/xdg/lxsession/LXDE/desktop.conf && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
     
