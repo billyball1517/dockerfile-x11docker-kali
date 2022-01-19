@@ -120,6 +120,8 @@ RUN echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}h
     touch /etc/skel/.BurpSuite/burpbrowser && \
     code --extensions-dir /etc/skel/.vscode/extensions --install-extension iliazeus.vscode-ansi  --user-data-dir /tmp/ && \
     echo 'export PATH=$PATH:$GOPATH/bin' >> /etc/skel/.bashrc && \
+    mkdir /etc/skel/.config/i3 && \
+    wget https://gitlab.com/Arszilla/kali-i3_gaps/-/raw/main/kali-config/common/includes.chroot/etc/skel/.config/i3/config -P /etc/skel/.config/i3/ && \
     git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -P /opt/PEASS-ng/linPEAS/ && \
     gunzip /usr/share/wordlists/rockyou.txt.gz && \
