@@ -67,11 +67,15 @@ RUN chmod +x ./install-chrome.sh && \
 # get the large base stuff out of the way
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-      i3-wm \
-      i3status \
-      x11-xserver-utils \
       systemd \
       kali-linux-default && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+#install the i3 tiling wm
+RUN apt-get update && \
+    apt-get install -y \
+      i3 \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
