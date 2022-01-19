@@ -67,7 +67,7 @@ RUN apt-get update && \
 #install the i3 tiling wm
 RUN apt-get update && \
     apt-get install -y \
-      i3 \
+      i3 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
