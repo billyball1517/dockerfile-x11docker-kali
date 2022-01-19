@@ -67,7 +67,7 @@ RUN apt-get update && \
 #install the i3 tiling wm
 RUN apt-get update && \
     apt-get install -y \
-      kali-desktop-i3-gaps && \
+      kali-desktop-i3 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -120,11 +120,6 @@ RUN echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}h
     touch /etc/skel/.BurpSuite/burpbrowser && \
     code --extensions-dir /etc/skel/.vscode/extensions --install-extension iliazeus.vscode-ansi  --user-data-dir /tmp/ && \
     echo 'export PATH=$PATH:$GOPATH/bin' >> /etc/skel/.bashrc && \
-    #mkdir /etc/skel/.config/i3 && \
-    #wget https://gitlab.com/Arszilla/kali-i3_gaps/-/raw/main/kali-config/common/includes.chroot/etc/skel/.config/i3/config -P /etc/skel/.config/i3/ && \
-    #mkdir /etc/skel/.config/i3status && \
-    #wget https://gitlab.com/Arszilla/kali-i3_gaps/-/raw/main/kali-config/common/includes.chroot/etc/skel/.config/i3status/i3status.conf -P /etc/skel/.config/i3status/ && \
-    #wget https://gitlab.com/Arszilla/kali-i3_gaps/-/raw/main/kali-config/common/includes.chroot/etc/skel/.Xresources -P /etc/skel/ && \
     git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -P /opt/PEASS-ng/linPEAS/ && \
     gunzip /usr/share/wordlists/rockyou.txt.gz && \
@@ -145,8 +140,6 @@ RUN echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}h
     rm -f get-pip.py && \
     python2 -m pip install pyftpdlib && \
     python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git
-
-RUN apt update && apt install -y lightdm
 
 RUN useradd -u 9001 -m -G wireshark -s /bin/bash kali
 
