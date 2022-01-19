@@ -77,7 +77,7 @@ RUN chmod +x ./install-chrome.sh && \
 RUN apt-get update && \
     apt-get install -y \
       feh \
-      kali-desktop-i3 && \
+      kali-desktop-i3-gaps && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
