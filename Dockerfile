@@ -68,6 +68,7 @@ RUN chmod +x ./install-chrome.sh && \
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       i3-wm \
+      i3status \
       systemd \
       kali-linux-default && \
     apt-get clean && \
