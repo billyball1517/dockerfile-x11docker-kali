@@ -47,28 +47,20 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# get the large base stuff out of the way
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+      systemd \
+      kali-linux-default && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
 # this stuff is to add the 3rd party repos
       software-properties-common apt-transport-https wget gpg gpg-agent \
 # this is for gpu support (experimental)
       mesa-utils mesa-utils-extra libxv1 && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-COPY install-chrome.sh /install-chrome.sh
-
-RUN chmod +x ./install-chrome.sh && \
-    ./install-chrome.sh && \
-    rm -f ./install-chrome.sh && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-# get the large base stuff out of the way
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-      systemd \
-      kali-linux-default && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -81,6 +73,8 @@ RUN apt-get update && \
 
 #neo4j packaged by kali cannot be enabled as a service, this may be redundant in the future
 COPY neo4j /etc/apt/preferences.d/neo4j
+
+COPY install-chrome.sh /install-chrome.sh
 
 # misc crap
 RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
@@ -108,6 +102,9 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       less \
       freerdp2-x11 \
       kali-tweaks && \
+      chmod +x ./install-chrome.sh && \
+      ./install-chrome.sh && \
+      rm -f ./install-chrome.sh && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
