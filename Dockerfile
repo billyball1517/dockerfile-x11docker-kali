@@ -142,7 +142,7 @@ RUN echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}h
     python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
+    apt-get install -y \
       lxsession && \
 #    sed -i 's/openbox-lxde/i3/g' /etc/xdg/lxsession/LXDE/desktop.conf && \
     apt-get clean && \
