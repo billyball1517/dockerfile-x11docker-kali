@@ -69,6 +69,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       i3-wm \
       i3status \
+      x11-xserver-utils \
       systemd \
       kali-linux-default && \
     apt-get clean && \
