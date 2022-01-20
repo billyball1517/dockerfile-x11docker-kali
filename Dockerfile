@@ -139,7 +139,7 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     echo 'exec_always --no-startup-id xrandr' >>  /etc/skel/.config/i3/config && \
     mkdir /etc/skel/results && \
     chmod g+rwx /etc/skel/results && \
-    chmod u+s /etc/skel/results && \
+    chmod g+s /etc/skel/results && \
     git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -P /opt/PEASS-ng/linPEAS/ && \
     gunzip /usr/share/wordlists/rockyou.txt.gz && \
