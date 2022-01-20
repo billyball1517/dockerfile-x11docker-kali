@@ -130,6 +130,8 @@ RUN echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}h
     sed -i '$d' /etc/skel/.config/i3/config && \
     echo 'exec --no-startup-id feh --bg-scale /etc/alternatives/desktop-background' >>  /etc/skel/.config/i3/config && \
     echo 'exec_always --no-startup-id autotiling' >>  /etc/skel/.config/i3/config && \
+    echo 'gaps inner 10' >>  /etc/skel/.config/i3/config && \
+    echo 'gaps outer 10' >>  /etc/skel/.config/i3/config && \
     git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -P /opt/PEASS-ng/linPEAS/ && \
     gunzip /usr/share/wordlists/rockyou.txt.gz && \
