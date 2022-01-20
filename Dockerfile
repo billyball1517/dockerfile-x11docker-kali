@@ -161,13 +161,11 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
 
 COPY terminatorconfig /etc/skel/.config/terminator/config
 
+COPY i3status.conf /etc/i3status.conf
+
 RUN useradd -u 9001 -m -G wireshark -s /bin/bash kali
 
 RUN echo "#! /bin/bash\n\
-echo 'x11docker/lxde: If the panel does not show an approbate menu\n\
-  and you encounter high CPU usage (seen with kata-runtime),\n\
-  please run with option --init=systemd.\n\
-' >&2 \n\
 i3\n\
 " >/usr/local/bin/start && chmod +x /usr/local/bin/start
 
