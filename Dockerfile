@@ -118,7 +118,9 @@ ENV DEBIAN_FRONTEND=readline
 COPY wireshark-expect /wireshark-expect
 
 #final configs
-RUN echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}history -a; history -c; history -r"' >> /etc/skel/.bashrc && \
+RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel/.bashrc && \
+    sed -i "s/NEWLINE_BEFORE_PROMPT=yes/NEWLINE_BEFORE_PROMPT=no/g" /etc/skel/.bashrc && \
+    echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}history -a; history -c; history -r"' >> /etc/skel/.bashrc && \
     echo 'export GOPATH=$HOME/go' >> /etc/skel/.bashrc && \
     echo 'export PATH=$PATH:$GOPATH/bin' >> /etc/skel/.bashrc && \
     mkdir /etc/skel/.BurpSuite && \
