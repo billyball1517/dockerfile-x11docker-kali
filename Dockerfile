@@ -135,7 +135,6 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     echo 'gaps inner 10' >>  /etc/skel/.config/i3/config && \
     echo 'gaps outer 10' >>  /etc/skel/.config/i3/config && \
     echo 'exec --no-startup-id feh --bg-scale /etc/alternatives/desktop-background' >>  /etc/skel/.config/i3/config && \
-    echo 'exec_always --no-startup-id autotiling' >>  /etc/skel/.config/i3/config && \
     echo 'exec_always --no-startup-id xrandr' >>  /etc/skel/.config/i3/config && \
     mkdir /etc/skel/results && \
     chmod g+rwx /etc/skel/results && \
@@ -159,8 +158,7 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     python2 get-pip.py && \
     rm -f get-pip.py && \
     python2 -m pip install pyftpdlib && \
-    python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git && \
-    python3 -m pip install autotiling
+    python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git
 
 COPY terminatorconfig /etc/skel/.config/terminator/config
 
