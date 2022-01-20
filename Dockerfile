@@ -126,6 +126,7 @@ RUN echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}h
     code --extensions-dir /etc/skel/.vscode/extensions --install-extension iliazeus.vscode-ansi  --user-data-dir /tmp/ && \
     echo 'export PATH=$PATH:$GOPATH/bin' >> /etc/skel/.bashrc && \
     mkdir -p /etc/skel/.config/i3 && \
+    mkdir -p .config/terminator && \
     cp /etc/i3/config /etc/skel/.config/i3/config && \
     sed -i '$d' /etc/skel/.config/i3/config && \
     echo 'for_window [class=".*"] border pixel 0' >>  /etc/skel/.config/i3/config && \
@@ -154,7 +155,9 @@ RUN echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}h
     python2 -m pip install pyftpdlib && \
     python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git && \
     python3 -m pip install autotiling
-    
+
+COPY terminatorconfig /etc/skel/.config/terminator/config
+
 RUN useradd -u 9001 -m -G wireshark -s /bin/bash kali
 
 RUN echo "#! /bin/bash\n\
