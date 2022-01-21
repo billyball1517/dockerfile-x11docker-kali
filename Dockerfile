@@ -142,9 +142,9 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -P /opt/PEASS-ng/linPEAS/ && \
     wget https://web.archive.org/web/20080530012252/http://live.sysinternals.com/accesschk.exe -P /usr/share/windows-resources/binaries/ && \
-    wget https://github.com/antonioCoco/RoguePotato/releases/latest/download/RoguePotato.zip && \
-    unzip /usr/share/windows-resources/binaries/RoguePotato.zip  -d /usr/share/windows-resources/binaries/ && \
-    rm -f RoguePotato.zip && \
+    wget https://github.com/antonioCoco/RoguePotato/releases/latest/download/RoguePotato.zip && -d /usr/share/windows-resources/binaries/ && \
+    unzip /usr/share/windows-resources/binaries/RoguePotato.zip -d /usr/share/windows-resources/binaries/ && \
+    rm -f /usr/share/windows-resources/binaries/RoguePotato.zip && \
     gunzip /usr/share/wordlists/rockyou.txt.gz && \
     systemctl enable postgresql && \
     service postgresql start && \
