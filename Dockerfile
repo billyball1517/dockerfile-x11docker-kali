@@ -124,6 +124,8 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}history -a; history -c; history -r"' >> /etc/skel/.bashrc && \
     echo 'export GOPATH=$HOME/go' >> /etc/skel/.bashrc && \
     echo 'export PATH=$PATH:$GOPATH/bin' >> /etc/skel/.bashrc && \
+    echo 'setfacl -Rm g:$(id -g):rwx $HOME/results' >> /etc/skel/.bashrc && \
+    echo 'setfacl -Rdm g:$(id -g):rwx $HOME/results' >> /etc/skel/.bashrc && \
     mkdir /etc/skel/.BurpSuite && \
     touch /etc/skel/.BurpSuite/burpbrowser && \
     code --extensions-dir /etc/skel/.vscode/extensions --install-extension iliazeus.vscode-ansi  --user-data-dir /tmp/ && \
@@ -174,9 +176,7 @@ COPY terminatorconfig /etc/skel/.config/terminator/config
 
 COPY i3status.conf /etc/i3status.conf
 
-RUN useradd -u 9001 -m -G wireshark -s /bin/bash kali && \
-    setfacl -Rm g:kali:rwx /etc/skel/results && \
-    setfacl -Rdm g:kali:rwx /etc/skel/results
+RUN useradd -u 9001 -m -G wireshark -s /bin/bash kali
 
 RUN echo "#! /bin/bash\n\
 i3\n\
