@@ -109,6 +109,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       man-db \
       less \
       freerdp2-x11 \
+      acl \
       kali-tweaks && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -174,6 +175,8 @@ COPY terminatorconfig /etc/skel/.config/terminator/config
 COPY i3status.conf /etc/i3status.conf
 
 RUN useradd -u 9001 -m -G wireshark -s /bin/bash kali
+setfacl -Rm g:kali:rwx /etc/skel/results
+setfacl -Rdm g:kali:rwx /etc/skel/results
 
 RUN echo "#! /bin/bash\n\
 i3\n\
