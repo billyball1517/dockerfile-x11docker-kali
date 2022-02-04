@@ -153,6 +153,7 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     systemctl enable postgresql && \
     service postgresql start && \
     msfdb init && \
+    wpscan --update --verbose && \
 # I know this script is messy but it's on debian for making such a crappy package configuration tool    
     chmod +x ./wireshark-expect && \
     ./wireshark-expect && \
