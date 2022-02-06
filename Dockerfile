@@ -172,7 +172,7 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     python2 get-pip.py && \
     rm -f get-pip.py && \
     python2 -m pip install pyftpdlib impacket && \
-    python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git
+    python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git git+https://github.com/bitsadmin/wesng.git
 
 COPY terminatorconfig /etc/skel/.config/terminator/config
 
