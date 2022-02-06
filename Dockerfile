@@ -110,6 +110,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       less \
       freerdp2-x11 \
       acl \
+      nishang \
       kali-tweaks && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
