@@ -130,6 +130,7 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     mkdir /etc/skel/.BurpSuite && \
     touch /etc/skel/.BurpSuite/burpbrowser && \
     code --extensions-dir /etc/skel/.vscode/extensions --install-extension iliazeus.vscode-ansi  --user-data-dir /tmp/ && \
+    code --extensions-dir /etc/skel/.vscode/extensions --install-extension tomoki1207.pdf --user-data-dir /tmp/ && \
     mkdir -p /etc/skel/.config/i3 && \
     mkdir -p /etc/skel/.config/terminator && \
     cp /etc/i3/config /etc/skel/.config/i3/config && \
