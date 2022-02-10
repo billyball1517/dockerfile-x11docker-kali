@@ -150,6 +150,8 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -P /opt/PEASS-ng/linPEAS/ && \
     wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEASany.exe -P /opt/PEASS-ng/winPEAS/ && \
     wget https://web.archive.org/web/20080530012252/http://live.sysinternals.com/accesschk.exe -P /usr/share/windows-resources/binaries/ && \
+    wget https://github.com/itm4n/PrintSpoofer/releases/latest/download/PrintSpoofer32.exe -P /usr/share/windows-resources/binaries/ && \
+    wget https://github.com/itm4n/PrintSpoofer/releases/latest/download/PrintSpoofer64.exe -P /usr/share/windows-resources/binaries/ && \
     wget https://github.com/ivanitlearning/Juicy-Potato-x86/releases/latest/download/Juicy.Potato.x86.exe -O /usr/share/windows-resources/binaries/JuicyPotato.exe && \
     wget https://github.com/antonioCoco/RoguePotato/releases/latest/download/RoguePotato.zip -P /usr/share/windows-resources/binaries/ && \
     unzip /usr/share/windows-resources/binaries/RoguePotato.zip -d /usr/share/windows-resources/binaries/ && \
