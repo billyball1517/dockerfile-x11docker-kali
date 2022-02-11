@@ -153,7 +153,8 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     https://github.com/Re4son/Churrasco/raw/master/churrasco.exe -P /usr/share/windows-resources/binaries/ && \
     wget https://github.com/itm4n/PrintSpoofer/releases/latest/download/PrintSpoofer32.exe -P /usr/share/windows-resources/binaries/ && \
     wget https://github.com/itm4n/PrintSpoofer/releases/latest/download/PrintSpoofer64.exe -P /usr/share/windows-resources/binaries/ && \
-    wget https://github.com/ivanitlearning/Juicy-Potato-x86/releases/latest/download/Juicy.Potato.x86.exe -O /usr/share/windows-resources/binaries/JuicyPotato.exe && \
+    wget https://github.com/ivanitlearning/Juicy-Potato-x86/releases/latest/download/Juicy.Potato.x86.exe -O /usr/share/windows-resources/binaries/JuicyPotato32.exe && \
+    wget https://github.com/ohpe/juicy-potato/releases/latest/download/JuicyPotato.exe -O /usr/share/windows-resources/binaries/JuicyPotato64.exe && \
     wget https://github.com/antonioCoco/RoguePotato/releases/latest/download/RoguePotato.zip -P /usr/share/windows-resources/binaries/ && \
     unzip /usr/share/windows-resources/binaries/RoguePotato.zip -d /usr/share/windows-resources/binaries/ && \
     rm -f /usr/share/windows-resources/binaries/RogueOxidResolver.exe && \
