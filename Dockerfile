@@ -112,6 +112,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       acl \
       nishang \
       odat \
+      fcrackzip \
       kali-tweaks && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
