@@ -102,6 +102,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       bloodhound \
       golang \
       python2 \
+      powershell \
       bash-completion \
       vim \
       terminator \
@@ -131,6 +132,9 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     echo 'setfacl -Rdm g:$(id -g):rwx $HOME/results' >> /etc/skel/.bashrc && \
     mkdir /etc/skel/.BurpSuite && \
     touch /etc/skel/.BurpSuite/burpbrowser && \
+    code --extensions-dir /etc/skel/.vscode/extensions --install-extension ms-python.python --user-data-dir /tmp/ && \
+    code --extensions-dir /etc/skel/.vscode/extensions --install-extension ms-vscode.PowerShell --user-data-dir /tmp/ && \
+    code --extensions-dir /etc/skel/.vscode/extensions --install-extension golang.go --user-data-dir /tmp/ && \
     code --extensions-dir /etc/skel/.vscode/extensions --install-extension iliazeus.vscode-ansi  --user-data-dir /tmp/ && \
     code --extensions-dir /etc/skel/.vscode/extensions --install-extension tomoki1207.pdf --user-data-dir /tmp/ && \
     mkdir -p /etc/skel/.config/i3 && \
