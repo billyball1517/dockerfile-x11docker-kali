@@ -114,6 +114,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       nishang \
       odat \
       fcrackzip \
+      gcc-multilib \
       kali-tweaks && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -134,6 +135,7 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     touch /etc/skel/.BurpSuite/burpbrowser && \
     code --extensions-dir /etc/skel/.vscode/extensions --install-extension ms-python.python --user-data-dir /tmp/ && \
     code --extensions-dir /etc/skel/.vscode/extensions --install-extension ms-vscode.PowerShell --user-data-dir /tmp/ && \
+    code --extensions-dir /etc/skel/.vscode/extensions --install-extension ms-vscode.cpptools-extension-pack --user-data-dir /tmp/ && \
     code --extensions-dir /etc/skel/.vscode/extensions --install-extension golang.go --user-data-dir /tmp/ && \
     code --extensions-dir /etc/skel/.vscode/extensions --install-extension iliazeus.vscode-ansi  --user-data-dir /tmp/ && \
     code --extensions-dir /etc/skel/.vscode/extensions --install-extension tomoki1207.pdf --user-data-dir /tmp/ && \
