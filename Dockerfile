@@ -142,6 +142,7 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     mkdir -p /etc/skel/.config/i3 && \
     mkdir -p /etc/skel/.config/terminator && \
     cp /etc/i3/config /etc/skel/.config/i3/config && \
+    sed -i "s/bindsym Mod1+Return exec i3-sensible-terminal/bindsym Mod1+Return exec --no-startup-id i3-sensible-terminal/g" /etc/skel/.config/i3/config && \
     sed -i '$d' /etc/skel/.config/i3/config && \
     echo 'for_window [class=".*"] border pixel 0' >>  /etc/skel/.config/i3/config && \
     echo 'gaps inner 10' >>  /etc/skel/.config/i3/config && \
