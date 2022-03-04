@@ -153,6 +153,7 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     chmod g+rwx /etc/skel/results && \
     chmod g+s /etc/skel/results && \
     git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
+    git clone https://github.com/61106960/adPEAS.git /opt/PEASS-ng/adPEAS && \
     git clone https://github.com/jondonas/linux-exploit-suggester-2.git /opt/linux-exploit-suggester-2 && \
     git clone https://github.com/3ndG4me/AutoBlue-MS17-010.git /opt/AutoBlue-MS17-010 && \
     git -C /opt/AutoBlue-MS17-010/ checkout 160df2c && \
