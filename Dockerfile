@@ -195,7 +195,8 @@ COPY terminatorconfig /etc/skel/.config/terminator/config
 
 COPY i3status.conf /etc/i3status.conf
 
-RUN useradd -u 9001 -m -G wireshark -s /bin/bash kali
+RUN useradd -u 9001 -m -s /bin/bash kali && \
+    usermod -aG wireshark kali
 
 RUN echo "#! /bin/bash\n\
 i3\n\
