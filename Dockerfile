@@ -116,7 +116,9 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       odat \
       fcrackzip \
       gcc-multilib \
-      kali-tweaks \
+      kali-tweaks && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
       /tmp/chrome-remote-desktop_current_amd64.deb && \
     rm -f /tmp/chrome-remote-desktop_current_amd64.deb && \
     apt-get clean && \
