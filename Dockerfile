@@ -66,7 +66,6 @@ RUN apt-get update && \
 
 COPY install-chrome.sh /install-chrome.sh
 
-
 RUN chmod +x ./install-chrome.sh && \
     ./install-chrome.sh && \
     rm -f ./install-chrome.sh && \
@@ -93,7 +92,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
     apt-key add neotechnology.gpg.key && \
     add-apt-repository "deb https://debian.neo4j.com stable latest" && \
     rm -f neotechnology.gpg.key && \
-    wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb -p /tmp/ && \
+    wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb -P /tmp/ && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
 # these next 2 lines are for autorecon
@@ -116,9 +115,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       odat \
       fcrackzip \
       gcc-multilib \
-      kali-tweaks && \
-    apt-get update && \
-    apt-get install -y --no-install-recommends \
+      kali-tweaks \
       /tmp/chrome-remote-desktop_current_amd64.deb && \
     rm -f /tmp/chrome-remote-desktop_current_amd64.deb && \
     apt-get clean && \
