@@ -93,6 +93,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
     apt-key add neotechnology.gpg.key && \
     add-apt-repository "deb https://debian.neo4j.com stable latest" && \
     rm -f neotechnology.gpg.key && \
+    wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb -p /tmp/ && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
 # these next 2 lines are for autorecon
@@ -115,7 +116,9 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       odat \
       fcrackzip \
       gcc-multilib \
-      kali-tweaks && \
+      kali-tweaks \
+      /tmp/chrome-remote-desktop_current_amd64.deb && \
+    rm -f /tmp/chrome-remote-desktop_current_amd64.deb && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -157,7 +160,7 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     git clone https://github.com/jondonas/linux-exploit-suggester-2.git /opt/linux-exploit-suggester-2 && \
     git clone https://github.com/3ndG4me/AutoBlue-MS17-010.git /opt/AutoBlue-MS17-010 && \
     git -C /opt/AutoBlue-MS17-010/ checkout 160df2c && \
-    wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -P /opt/PEASS-ng/linPEAS/ && \
+        wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -P /opt/PEASS-ng/linPEAS/ && \
     wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEASany.exe -P /opt/PEASS-ng/winPEAS/ && \
     wget https://web.archive.org/web/20080530012252/http://live.sysinternals.com/accesschk.exe -P /usr/share/windows-resources/binaries/ && \
     wget https://github.com/Re4son/Churrasco/raw/master/churrasco.exe -P /usr/share/windows-resources/binaries/ && \
