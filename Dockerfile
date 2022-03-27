@@ -115,6 +115,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       odat \
       fcrackzip \
       gcc-multilib \
+      mingw-w64 \
       kali-tweaks && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
