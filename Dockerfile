@@ -118,6 +118,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       gcc-multilib \
       mingw-w64 \
       wine \
+      wine32
       winetricks \
       kali-tweaks && \
     apt-get clean && \
