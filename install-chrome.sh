@@ -24,3 +24,4 @@ fi
 
 install_chrome_extension "dookpfaalaaappcdneeahomimbllocnb" "foxyproxy-basic"
 install_chrome_extension "hlkenndednhfkekhgcdicdfddnkalmdm" "cookie-editor"
+install_chrome_extension "cjpalhdlnbpafiamejdnhcphjbkeiagm" "ublock-origin"
