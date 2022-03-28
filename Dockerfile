@@ -81,6 +81,16 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+RUN dpkg --add-architecture i386 && \
+    wget -nc https://dl.winehq.org/wine-builds/winehq.key && \
+    apt-key add winehq.key && \
+    rm -f winehq.key && \
+    echo 'deb https://dl.winehq.org/wine-builds/debian/ testing main' > /etc/apt/sources.list.d/winehq.list && \
+    apt update && \
+    apt install -y --install-recommends winehq-stable && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 #neo4j packaged by kali cannot be enabled as a service, this may be redundant in the future
 COPY neo4j /etc/apt/preferences.d/neo4j
 
