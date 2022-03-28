@@ -93,7 +93,6 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
     apt-key add neotechnology.gpg.key && \
     add-apt-repository "deb https://debian.neo4j.com stable latest" && \
     rm -f neotechnology.gpg.key && \
-    dpkg --add-architecture i386 && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
 # these next 2 lines are for autorecon
@@ -117,9 +116,6 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       fcrackzip \
       gcc-multilib \
       mingw-w64 \
-      wine \
-      wine32 \
-      winetricks \
       kali-tweaks && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
