@@ -126,6 +126,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       fcrackzip \
       gcc-multilib \
       mingw-w64 \
+      proxychains \
       kali-tweaks && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
