@@ -179,6 +179,7 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     wget https://github.com/ohpe/juicy-potato/releases/latest/download/JuicyPotato.exe -O /usr/share/windows-resources/binaries/JuicyPotato64.exe && \
     wget https://github.com/antonioCoco/RoguePotato/releases/latest/download/RoguePotato.zip -P /usr/share/windows-resources/binaries/ && \
     unzip /usr/share/windows-resources/binaries/RoguePotato.zip -d /usr/share/windows-resources/binaries/ && \
+    rm -f /usr/share/windows-resources/binaries/plink.exe
     wget https://the.earth.li/~sgtatham/putty/latest/w32/plink.exe -P  /usr/share/windows-resources/binaries/ && \
     rm -f /usr/share/windows-resources/binaries/RogueOxidResolver.exe && \
     rm -f /usr/share/windows-resources/binaries/RoguePotato.zip && \
