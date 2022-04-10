@@ -171,6 +171,13 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     git -C /opt/AutoBlue-MS17-010/ checkout 160df2c && \
     wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -P /opt/PEASS-ng/linPEAS/ && \
     wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEASany.exe -P /opt/PEASS-ng/winPEAS/ && \
+    mkdir /opt/chisel && \
+    curl -s https://api.github.com/repos/jpillora/chisel/releases/latest | grep -E '*browser' | grep -E '*_windows_386.gz' | cut -d : -f 2,3 | tr -d \" | wget -i - -O /opt/chisel/chisel_windows_386.exe.gz && \
+    curl -s https://api.github.com/repos/jpillora/chisel/releases/latest | grep -E '*browser' | grep -E '*_windows_amd64.gz' | cut -d : -f 2,3 | tr -d \" | wget -i - -O /opt/chisel/chisel_windows_amd64.exe.gz && \
+    curl -s https://api.github.com/repos/jpillora/chisel/releases/latest | grep -E '*browser' | grep -E '*_linux_386.gz' | cut -d : -f 2,3 | tr -d \" | wget -i - -O /opt/chisel/chisel_linux_386.elf.gz && \
+    curl -s https://api.github.com/repos/jpillora/chisel/releases/latest | grep -E '*browser' | grep -E '*_linux_amd64.gz' | cut -d : -f 2,3 | tr -d \" | wget -i - -O /opt/chisel/chisel_linux_amd64.elf.gz && \
+    gunzip /opt/chisel/* && \
+    chmod +x /opt/chisel/* && \
     wget https://web.archive.org/web/20080530012252/http://live.sysinternals.com/accesschk.exe -P /usr/share/windows-resources/binaries/ && \
     wget https://github.com/Re4son/Churrasco/raw/master/churrasco.exe -P /usr/share/windows-resources/binaries/ && \
     wget https://github.com/itm4n/PrintSpoofer/releases/latest/download/PrintSpoofer32.exe -P /usr/share/windows-resources/binaries/ && \
