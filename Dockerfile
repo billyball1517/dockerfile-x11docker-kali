@@ -165,6 +165,7 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     chmod g+rwx /etc/skel/results && \
     chmod g+s /etc/skel/results && \
     sed -i '$d' /etc/proxychains.conf && \
+    sed -i '$d' /etc/proxychains.conf && \
     echo 'socks5 127.0.0.1 1080' >> /etc/proxychains.conf && \
     git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     git clone https://github.com/61106960/adPEAS.git /opt/PEASS-ng/adPEAS && \
