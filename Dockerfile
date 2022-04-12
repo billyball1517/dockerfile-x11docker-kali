@@ -88,6 +88,8 @@ RUN dpkg --add-architecture i386 && \
     echo 'deb https://dl.winehq.org/wine-builds/debian/ testing main' > /etc/apt/sources.list.d/winehq.list && \
     apt update && \
     apt install -y --install-recommends winehq-stable && \
+    wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks -P /usr/local/bin && \
+    chmod +x /usr/local/bin/winetricks && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
