@@ -198,6 +198,10 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     rm -f /usr/share/windows-resources/binaries/RoguePotato.zip && \
     rm -f /usr/share/windows-resources/binaries/plink.exe && \
     wget https://the.earth.li/~sgtatham/putty/latest/w32/plink.exe -P  /usr/share/windows-resources/binaries/ && \
+    rm -rf /usr/share/windows-resources/mimikatz/* && \
+    wget https://github.com/gentilkiwi/mimikatz/files/4167347/mimikatz_trunk.zip && \
+    unzip mimikatz_trunk.zip -d /usr/share/windows-resources/mimikatz/ && \
+    rm -f mimikatz_trunk.zip && \
     chmod +x /usr/share/windows-resources/binaries/* && \
     gunzip /usr/share/wordlists/rockyou.txt.gz && \
     systemctl enable postgresql && \
