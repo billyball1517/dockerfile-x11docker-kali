@@ -143,10 +143,10 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}history -a; history -c; history -r"' >> /etc/skel/.bashrc && \
     echo 'export GOPATH=$HOME/go' >> /etc/skel/.bashrc && \
     echo 'export PATH=$PATH:$GOPATH/bin' >> /etc/skel/.bashrc && \
-    echo 'setfacl -Rm u:$(id -u):rwx $HOME/results' >> /etc/skel/.bashrc && \
-    echo 'setfacl -Rm g:$(id -g):rwx $HOME/results' >> /etc/skel/.bashrc && \
-    echo 'setfacl -Rdm u:$(id -u):rwx $HOME/results' >> /etc/skel/.bashrc && \
-    echo 'setfacl -Rdm g:$(id -g):rwx $HOME/results' >> /etc/skel/.bashrc && \
+    echo 'setfacl -Rm u:$(id -u):rwx $HOME/results 2> /dev/null' >> /etc/skel/.bashrc && \
+    echo 'setfacl -Rm g:$(id -g):rwx $HOME/results 2> /dev/null' >> /etc/skel/.bashrc && \
+    echo 'setfacl -Rdm u:$(id -u):rwx $HOME/results 2> /dev/null' >> /etc/skel/.bashrc && \
+    echo 'setfacl -Rdm g:$(id -g):rwx $HOME/results 2> /dev/null' >> /etc/skel/.bashrc && \
     mkdir /etc/skel/.BurpSuite && \
     touch /etc/skel/.BurpSuite/burpbrowser && \
     code --extensions-dir /etc/skel/.vscode/extensions --install-extension ms-python.python --user-data-dir /tmp/ && \
