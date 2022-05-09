@@ -164,7 +164,7 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     echo 'for_window [class=".*"] border pixel 0' >>  /etc/skel/.config/i3/config && \
     echo 'gaps inner 10' >>  /etc/skel/.config/i3/config && \
     echo 'gaps outer 10' >>  /etc/skel/.config/i3/config && \
-    echo 'exec --no-startup-id feh --bg-scale /etc/alternatives/desktop-background' >>  /etc/skel/.config/i3/config && \
+    echo 'exec --no-startup-id feh --bg-fill /etc/alternatives/desktop-background' >>  /etc/skel/.config/i3/config && \
     echo 'exec_always --no-startup-id xrandr' >>  /etc/skel/.config/i3/config && \
     mkdir /etc/skel/results && \
     chmod g+rwx /etc/skel/results && \
