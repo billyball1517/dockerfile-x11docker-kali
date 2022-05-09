@@ -166,6 +166,7 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     echo 'gaps outer 10' >>  /etc/skel/.config/i3/config && \
     echo 'exec --no-startup-id feh --bg-fill /etc/alternatives/desktop-background' >>  /etc/skel/.config/i3/config && \
     echo 'exec_always --no-startup-id xrandr' >>  /etc/skel/.config/i3/config && \
+    echo 'exec_always --no-startup-id xrdb -merge ~/.Xresources' >>  /etc/skel/.config/i3/config && \
     mkdir /etc/skel/results && \
     chmod g+rwx /etc/skel/results && \
     chmod g+s /etc/skel/results && \
@@ -228,6 +229,8 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     updatedb
 
 COPY terminatorconfig /etc/skel/.config/terminator/config
+
+COPY Xresources /etc/skel/.Xresources
 
 COPY i3status.conf /etc/i3status.conf
 
