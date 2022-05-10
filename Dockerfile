@@ -228,6 +228,12 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     gem install evil-winrm && \
     updatedb
 
+#experimental
+RUN apt-get update && \
+    apt-get install -y spice-vdagent xserver-xorg-video-qxl && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 COPY terminatorconfig /etc/skel/.config/terminator/config
 
 COPY Xresources /etc/skel/.Xresources
