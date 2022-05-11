@@ -237,15 +237,13 @@ COPY i3status.conf /etc/i3status.conf
 RUN useradd -u 9001 -G wireshark -m -s /bin/bash kali && \
     echo 'kali ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/kali
 
-COPY start /usr/local/bin/start
-
-RUN chmod +x /usr/local/bin/start
-
 RUN apt-get update && \
     apt-get install -y --no-install-recommends gosu && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-#USER kali
+COPY start /usr/local/bin/start
 
-CMD ["/usr/local/bin/start"]
+RUN chmod +x /usr/local/bin/start
+
+CMD ["/usr/local/bin/start","passowrd"]
