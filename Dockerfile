@@ -234,8 +234,7 @@ COPY Xresources /etc/skel/.Xresources
 
 COPY i3status.conf /etc/i3status.conf
 
-RUN useradd -u 9001 -G wireshark -m -s /bin/bash kali && \
-    echo 'kali ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/kali
+RUN useradd -u 9001 -G wireshark -m -s /bin/bash kali
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends gosu && \
