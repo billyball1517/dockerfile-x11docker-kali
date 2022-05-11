@@ -129,9 +129,17 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       gcc-multilib \
       mingw-w64 \
       proxychains \
+      gosu \
       kali-tweaks && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+RUN wget https://bootstrap.pypa.io/pip/2.7/get-pip.py  && \
+    python2 get-pip.py && \
+    rm -f get-pip.py && \
+    python2 -m pip install pyftpdlib impacket && \
+    python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git git+https://github.com/bitsadmin/wesng.git && \
+    gem install evil-winrm
 
 ENV DEBIAN_FRONTEND=readline
 
@@ -220,12 +228,6 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     neo4j-admin set-initial-password neo4j && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 1 && \
     update-alternatives --install /usr/bin/python python /usr/bin/python2 2 && \
-    wget https://bootstrap.pypa.io/pip/2.7/get-pip.py  && \
-    python2 get-pip.py && \
-    rm -f get-pip.py && \
-    python2 -m pip install pyftpdlib impacket && \
-    python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git git+https://github.com/bitsadmin/wesng.git && \
-    gem install evil-winrm && \
     updatedb
 
 COPY terminatorconfig /etc/skel/.config/terminator/config
@@ -235,11 +237,6 @@ COPY Xresources /etc/skel/.Xresources
 COPY i3status.conf /etc/i3status.conf
 
 RUN useradd -u 9001 -G sudo,wireshark -m -s /bin/bash kali
-
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends gosu && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
 
 COPY start /usr/local/bin/start
 
