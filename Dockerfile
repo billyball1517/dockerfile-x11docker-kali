@@ -55,6 +55,14 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+#install the i3 tiling wm
+RUN apt-get update && \
+    apt-get install -y \
+      feh \
+      kali-desktop-i3-gaps && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
 # this stuff is to add the 3rd party repos
@@ -66,18 +74,9 @@ RUN apt-get update && \
 
 COPY install-chrome.sh /install-chrome.sh
 
-
 RUN chmod +x ./install-chrome.sh && \
     ./install-chrome.sh && \
     rm -f ./install-chrome.sh && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-#install the i3 tiling wm
-RUN apt-get update && \
-    apt-get install -y \
-      feh \
-      kali-desktop-i3-gaps && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -124,7 +123,6 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       freerdp2-x11 \
       acl \
       nishang \
-      odat \
       fcrackzip \
       gcc-multilib \
       mingw-w64 \
@@ -134,18 +132,21 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+#install non-apt stuff
 RUN wget https://bootstrap.pypa.io/pip/2.7/get-pip.py  && \
     python2 get-pip.py && \
     rm -f get-pip.py && \
-    python2 -m pip install pyftpdlib impacket && \
-    python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git git+https://github.com/bitsadmin/wesng.git && \
+    python2 -m pip install pyftpdlib impacket --no-cache-dir && \
+    python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git git+https://github.com/bitsadmin/wesng.git --no-cache-dir && \
     gem install evil-winrm
 
-ENV DEBIAN_FRONTEND=readline
+#skel configs
+COPY i3status.conf /etc/i3status.conf
 
-COPY wireshark-expect /wireshark-expect
+COPY terminatorconfig /etc/skel/.config/terminator/config
 
-#final configs
+COPY Xresources /etc/skel/.Xresources
+
 RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel/.bashrc && \
     sed -i "s/NEWLINE_BEFORE_PROMPT=yes/NEWLINE_BEFORE_PROMPT=no/g" /etc/skel/.bashrc && \
     echo 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\''\\n'\''}history -a; history -c; history -r"' >> /etc/skel/.bashrc && \
@@ -177,11 +178,10 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     echo 'exec_always --no-startup-id xrdb -merge ~/.Xresources' >>  /etc/skel/.config/i3/config && \
     mkdir /etc/skel/results && \
     chmod g+rwx /etc/skel/results && \
-    chmod g+s /etc/skel/results && \
-    sed -i '$d' /etc/proxychains.conf && \
-    sed -i '$d' /etc/proxychains.conf && \
-    echo 'socks5 127.0.0.1 1080' >> /etc/proxychains.conf && \
-    git clone https://github.com/itm4n/PrivescCheck.git /opt/PrivescCheck && \
+    chmod g+s /etc/skel/results
+
+#download random binaries and unzip stuff
+RUN git clone https://github.com/itm4n/PrivescCheck.git /opt/PrivescCheck && \
     git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
     git clone https://github.com/61106960/adPEAS.git /opt/PEASS-ng/adPEAS && \
     git clone https://github.com/jondonas/linux-exploit-suggester-2.git /opt/linux-exploit-suggester-2 && \
@@ -214,7 +214,16 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     unzip mimikatz_trunk.zip -d /usr/share/windows-resources/mimikatz/ && \
     rm -f mimikatz_trunk.zip && \
     chmod +x /usr/share/windows-resources/binaries/* && \
-    gunzip /usr/share/wordlists/rockyou.txt.gz && \
+    gunzip /usr/share/wordlists/rockyou.txt.gz
+
+#final random configs
+ENV DEBIAN_FRONTEND=readline
+
+COPY wireshark-expect /wireshark-expect
+    
+RUN sed -i '$d' /etc/proxychains.conf && \
+    sed -i '$d' /etc/proxychains.conf && \
+    echo 'socks5 127.0.0.1 1080' >> /etc/proxychains.conf && \
     systemctl enable postgresql && \
     service postgresql start && \
     msfdb init && \
@@ -229,12 +238,6 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     update-alternatives --install /usr/bin/python python /usr/bin/python3 1 && \
     update-alternatives --install /usr/bin/python python /usr/bin/python2 2 && \
     updatedb
-
-COPY terminatorconfig /etc/skel/.config/terminator/config
-
-COPY Xresources /etc/skel/.Xresources
-
-COPY i3status.conf /etc/i3status.conf
 
 RUN useradd -u 9001 -G sudo,wireshark -m -s /bin/bash kali
 
