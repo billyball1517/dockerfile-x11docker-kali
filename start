@@ -3,4 +3,5 @@ service postgresql start > /dev/null &
 service neo4j start > /dev/null &
 echo "kali:$KALI_PASS" | chpasswd
 export KALI_PASS=troll
+export JDK_JAVA_OPTIONS='-Dsun.java2d.xrender=false'
 /usr/sbin/gosu kali "i3"
