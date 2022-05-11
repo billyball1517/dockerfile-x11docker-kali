@@ -234,9 +234,10 @@ COPY Xresources /etc/skel/.Xresources
 
 COPY i3status.conf /etc/i3status.conf
 
-RUN echo "#! /bin/bash\n\
+RUN echo '#! /bin/bash\n\
 i3\n\
-" >/usr/local/bin/start && chmod +x /usr/local/bin/start
+echo password | passwd --stdin root \n\
+'>/usr/local/bin/start && chmod +x /usr/local/bin/start
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends gosu && \
