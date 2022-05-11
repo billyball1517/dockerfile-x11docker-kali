@@ -241,6 +241,11 @@ COPY start /usr/local/bin/start
 
 RUN chmod +x /usr/local/bin/start
 
-USER kali
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends gosu && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+#USER kali
 
 CMD ["/usr/local/bin/start"]
