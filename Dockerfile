@@ -234,18 +234,13 @@ COPY Xresources /etc/skel/.Xresources
 
 COPY i3status.conf /etc/i3status.conf
 
-RUN echo '#! /bin/bash\n\
-i3\n\
-echo password | passwd --stdin root \n\
-'>/usr/local/bin/start && chmod +x /usr/local/bin/start
-
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends gosu && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
 RUN useradd -u 9001 -G wireshark -m -s /bin/bash kali && \
     echo 'kali ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/kali
+
+RUN echo '#! /bin/bash\n\
+i3\n\
+echo password | passwd --stdin kali \n\
+'>/usr/local/bin/start && chmod +x /usr/local/bin/start
 
 USER kali
 
