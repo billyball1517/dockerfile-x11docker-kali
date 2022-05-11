@@ -245,10 +245,6 @@ RUN apt-get update && \
 
 RUN useradd -u 9001 -G sudo,wireshark -m -s /bin/bash kali
 
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-
 USER kali
 
 CMD ["/usr/local/bin/start"]
