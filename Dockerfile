@@ -140,6 +140,42 @@ RUN wget https://bootstrap.pypa.io/pip/2.7/get-pip.py  && \
     python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git git+https://github.com/bitsadmin/wesng.git --no-cache-dir && \
     gem install evil-winrm
 
+#download random binaries and unzip stuff
+RUN git clone https://github.com/itm4n/PrivescCheck.git /opt/PrivescCheck && \
+    git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
+    git clone https://github.com/61106960/adPEAS.git /opt/PEASS-ng/adPEAS && \
+    git clone https://github.com/jondonas/linux-exploit-suggester-2.git /opt/linux-exploit-suggester-2 && \
+    git clone https://github.com/3ndG4me/AutoBlue-MS17-010.git /opt/AutoBlue-MS17-010 && \
+    git -C /opt/AutoBlue-MS17-010/ checkout 160df2c && \
+    wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -P /opt/PEASS-ng/linPEAS/ && \
+    wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEASany.exe -P /opt/PEASS-ng/winPEAS/ && \
+    mkdir /opt/chisel && \
+    curl -s https://api.github.com/repos/jpillora/chisel/releases/latest | grep -E '*browser' | grep -E '*_windows_386.gz' | cut -d : -f 2,3 | tr -d \" | wget -i - -O /opt/chisel/chisel_windows_386.exe.gz && \
+    curl -s https://api.github.com/repos/jpillora/chisel/releases/latest | grep -E '*browser' | grep -E '*_windows_amd64.gz' | cut -d : -f 2,3 | tr -d \" | wget -i - -O /opt/chisel/chisel_windows_amd64.exe.gz && \
+    curl -s https://api.github.com/repos/jpillora/chisel/releases/latest | grep -E '*browser' | grep -E '*_linux_386.gz' | cut -d : -f 2,3 | tr -d \" | wget -i - -O /opt/chisel/chisel_linux_386.elf.gz && \
+    curl -s https://api.github.com/repos/jpillora/chisel/releases/latest | grep -E '*browser' | grep -E '*_linux_amd64.gz' | cut -d : -f 2,3 | tr -d \" | wget -i - -O /opt/chisel/chisel_linux_amd64.elf.gz && \
+    gunzip /opt/chisel/* && \
+    chmod +x /opt/chisel/* && \
+    wget https://live.sysinternals.com/PsExec.exe -P /usr/share/windows-resources/binaries/ && \
+    wget https://web.archive.org/web/20080530012252/http://live.sysinternals.com/accesschk.exe -P /usr/share/windows-resources/binaries/ && \
+    wget https://github.com/Re4son/Churrasco/raw/master/churrasco.exe -P /usr/share/windows-resources/binaries/ && \
+    wget https://github.com/itm4n/PrintSpoofer/releases/latest/download/PrintSpoofer32.exe -P /usr/share/windows-resources/binaries/ && \
+    wget https://github.com/itm4n/PrintSpoofer/releases/latest/download/PrintSpoofer64.exe -P /usr/share/windows-resources/binaries/ && \
+    wget https://github.com/ivanitlearning/Juicy-Potato-x86/releases/latest/download/Juicy.Potato.x86.exe -O /usr/share/windows-resources/binaries/JuicyPotato32.exe && \
+    wget https://github.com/ohpe/juicy-potato/releases/latest/download/JuicyPotato.exe -O /usr/share/windows-resources/binaries/JuicyPotato64.exe && \
+    wget https://github.com/antonioCoco/RoguePotato/releases/latest/download/RoguePotato.zip -P /usr/share/windows-resources/binaries/ && \
+    unzip /usr/share/windows-resources/binaries/RoguePotato.zip -d /usr/share/windows-resources/binaries/ && \
+    rm -f /usr/share/windows-resources/binaries/RogueOxidResolver.exe && \
+    rm -f /usr/share/windows-resources/binaries/RoguePotato.zip && \
+    rm -f /usr/share/windows-resources/binaries/plink.exe && \
+    wget https://the.earth.li/~sgtatham/putty/latest/w32/plink.exe -P  /usr/share/windows-resources/binaries/ && \
+    rm -rf /usr/share/windows-resources/mimikatz/* && \
+    wget https://github.com/gentilkiwi/mimikatz/files/4167347/mimikatz_trunk.zip && \
+    unzip mimikatz_trunk.zip -d /usr/share/windows-resources/mimikatz/ && \
+    rm -f mimikatz_trunk.zip && \
+    chmod +x /usr/share/windows-resources/binaries/* && \
+    gunzip /usr/share/wordlists/rockyou.txt.gz
+
 #skel configs
 COPY i3status.conf /etc/i3status.conf
 
@@ -179,42 +215,6 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     mkdir /etc/skel/results && \
     chmod g+rwx /etc/skel/results && \
     chmod g+s /etc/skel/results
-
-#download random binaries and unzip stuff
-RUN git clone https://github.com/itm4n/PrivescCheck.git /opt/PrivescCheck && \
-    git clone https://github.com/carlospolop/PEASS-ng.git /opt/PEASS-ng && \
-    git clone https://github.com/61106960/adPEAS.git /opt/PEASS-ng/adPEAS && \
-    git clone https://github.com/jondonas/linux-exploit-suggester-2.git /opt/linux-exploit-suggester-2 && \
-    git clone https://github.com/3ndG4me/AutoBlue-MS17-010.git /opt/AutoBlue-MS17-010 && \
-    git -C /opt/AutoBlue-MS17-010/ checkout 160df2c && \
-    wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -P /opt/PEASS-ng/linPEAS/ && \
-    wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEASany.exe -P /opt/PEASS-ng/winPEAS/ && \
-    mkdir /opt/chisel && \
-    curl -s https://api.github.com/repos/jpillora/chisel/releases/latest | grep -E '*browser' | grep -E '*_windows_386.gz' | cut -d : -f 2,3 | tr -d \" | wget -i - -O /opt/chisel/chisel_windows_386.exe.gz && \
-    curl -s https://api.github.com/repos/jpillora/chisel/releases/latest | grep -E '*browser' | grep -E '*_windows_amd64.gz' | cut -d : -f 2,3 | tr -d \" | wget -i - -O /opt/chisel/chisel_windows_amd64.exe.gz && \
-    curl -s https://api.github.com/repos/jpillora/chisel/releases/latest | grep -E '*browser' | grep -E '*_linux_386.gz' | cut -d : -f 2,3 | tr -d \" | wget -i - -O /opt/chisel/chisel_linux_386.elf.gz && \
-    curl -s https://api.github.com/repos/jpillora/chisel/releases/latest | grep -E '*browser' | grep -E '*_linux_amd64.gz' | cut -d : -f 2,3 | tr -d \" | wget -i - -O /opt/chisel/chisel_linux_amd64.elf.gz && \
-    gunzip /opt/chisel/* && \
-    chmod +x /opt/chisel/* && \
-    wget https://live.sysinternals.com/PsExec.exe -P /usr/share/windows-resources/binaries/ && \
-    wget https://web.archive.org/web/20080530012252/http://live.sysinternals.com/accesschk.exe -P /usr/share/windows-resources/binaries/ && \
-    wget https://github.com/Re4son/Churrasco/raw/master/churrasco.exe -P /usr/share/windows-resources/binaries/ && \
-    wget https://github.com/itm4n/PrintSpoofer/releases/latest/download/PrintSpoofer32.exe -P /usr/share/windows-resources/binaries/ && \
-    wget https://github.com/itm4n/PrintSpoofer/releases/latest/download/PrintSpoofer64.exe -P /usr/share/windows-resources/binaries/ && \
-    wget https://github.com/ivanitlearning/Juicy-Potato-x86/releases/latest/download/Juicy.Potato.x86.exe -O /usr/share/windows-resources/binaries/JuicyPotato32.exe && \
-    wget https://github.com/ohpe/juicy-potato/releases/latest/download/JuicyPotato.exe -O /usr/share/windows-resources/binaries/JuicyPotato64.exe && \
-    wget https://github.com/antonioCoco/RoguePotato/releases/latest/download/RoguePotato.zip -P /usr/share/windows-resources/binaries/ && \
-    unzip /usr/share/windows-resources/binaries/RoguePotato.zip -d /usr/share/windows-resources/binaries/ && \
-    rm -f /usr/share/windows-resources/binaries/RogueOxidResolver.exe && \
-    rm -f /usr/share/windows-resources/binaries/RoguePotato.zip && \
-    rm -f /usr/share/windows-resources/binaries/plink.exe && \
-    wget https://the.earth.li/~sgtatham/putty/latest/w32/plink.exe -P  /usr/share/windows-resources/binaries/ && \
-    rm -rf /usr/share/windows-resources/mimikatz/* && \
-    wget https://github.com/gentilkiwi/mimikatz/files/4167347/mimikatz_trunk.zip && \
-    unzip mimikatz_trunk.zip -d /usr/share/windows-resources/mimikatz/ && \
-    rm -f mimikatz_trunk.zip && \
-    chmod +x /usr/share/windows-resources/binaries/* && \
-    gunzip /usr/share/wordlists/rockyou.txt.gz
 
 #final random configs
 ENV DEBIAN_FRONTEND=readline
