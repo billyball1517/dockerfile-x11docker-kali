@@ -240,6 +240,13 @@ RUN echo "#! /bin/bash\n\
 i3\n\
 " >/usr/local/bin/start && chmod +x /usr/local/bin/start
 
-USER kali
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends gosu && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 CMD ["/usr/local/bin/start"]
