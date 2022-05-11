@@ -237,10 +237,9 @@ COPY i3status.conf /etc/i3status.conf
 RUN useradd -u 9001 -G wireshark -m -s /bin/bash kali && \
     echo 'kali ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/kali
 
-RUN echo '#! /bin/bash\n\
-i3\n\
-echo password | passwd --stdin kali \n\
-'>/usr/local/bin/start && chmod +x /usr/local/bin/start
+COPY start /usr/local/bin/start
+
+RUN chmod +x /usr/local/bin/start
 
 USER kali
 
