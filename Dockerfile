@@ -176,6 +176,29 @@ RUN git clone https://github.com/itm4n/PrivescCheck.git /opt/PrivescCheck && \
     chmod +x /usr/share/windows-resources/binaries/* && \
     gunzip /usr/share/wordlists/rockyou.txt.gz
 
+#final random configs
+ENV DEBIAN_FRONTEND=readline
+
+COPY wireshark-expect /wireshark-expect
+    
+RUN sed -i '$d' /etc/proxychains.conf && \
+    sed -i '$d' /etc/proxychains.conf && \
+    echo 'socks5 127.0.0.1 1080' >> /etc/proxychains.conf && \
+    systemctl enable postgresql && \
+    service postgresql start && \
+    msfdb init && \
+    wpscan --update --verbose && \
+# I know this script is messy but it's on debian for making such a crappy package configuration tool    
+    chmod +x ./wireshark-expect && \
+    ./wireshark-expect && \
+    rm -f ./wireshark-expect && \
+    systemctl enable neo4j && \
+    service neo4j start && \
+    neo4j-admin set-initial-password neo4j && \
+    update-alternatives --install /usr/bin/python python /usr/bin/python3 1 && \
+    update-alternatives --install /usr/bin/python python /usr/bin/python2 2 && \
+    updatedb
+
 #skel configs
 COPY i3status.conf /etc/i3status.conf
 
@@ -215,29 +238,6 @@ RUN sed -i "s/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g" /etc/skel
     mkdir /etc/skel/results && \
     chmod g+rwx /etc/skel/results && \
     chmod g+s /etc/skel/results
-
-#final random configs
-ENV DEBIAN_FRONTEND=readline
-
-COPY wireshark-expect /wireshark-expect
-    
-RUN sed -i '$d' /etc/proxychains.conf && \
-    sed -i '$d' /etc/proxychains.conf && \
-    echo 'socks5 127.0.0.1 1080' >> /etc/proxychains.conf && \
-    systemctl enable postgresql && \
-    service postgresql start && \
-    msfdb init && \
-    wpscan --update --verbose && \
-# I know this script is messy but it's on debian for making such a crappy package configuration tool    
-    chmod +x ./wireshark-expect && \
-    ./wireshark-expect && \
-    rm -f ./wireshark-expect && \
-    systemctl enable neo4j && \
-    service neo4j start && \
-    neo4j-admin set-initial-password neo4j && \
-    update-alternatives --install /usr/bin/python python /usr/bin/python3 1 && \
-    update-alternatives --install /usr/bin/python python /usr/bin/python2 2 && \
-    updatedb
 
 RUN useradd -u 9001 -G sudo,wireshark -m -s /bin/bash kali
 
