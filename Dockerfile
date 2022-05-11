@@ -243,7 +243,8 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN useradd -u 9001 -G sudo,wireshark -m -s /bin/bash kali
+RUN useradd -u 9001 -G wireshark -m -s /bin/bash kali && \
+    echo 'kali ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/kali
 
 USER kali
 
