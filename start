@@ -1,0 +1,3 @@
+#!/bin/bash
+echo 'kali:password' | chpasswd
+i3
