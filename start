@@ -1,4 +1,5 @@
 #!/bin/bash
+chown -R kali:kali /home/kali
 service postgresql start > /dev/null &
 service neo4j start > /dev/null &
 echo "kali:$KALI_PASS" | chpasswd
