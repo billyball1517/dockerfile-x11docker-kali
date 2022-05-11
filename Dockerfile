@@ -246,4 +246,4 @@ COPY start /usr/local/bin/start
 
 RUN chmod +x /usr/local/bin/start
 
-CMD ["/usr/local/bin/start","password"]
+CMD ["/usr/local/bin/start","$KALI_PASS"]
