@@ -1,4 +1,6 @@
 #!/bin/bash
+service postgresql start > /dev/null &
+service neo4j start > /dev/null &
 echo "kali:$KALI_PASS" | chpasswd
 export KALI_PASS=troll
 /usr/sbin/gosu kali "i3"
