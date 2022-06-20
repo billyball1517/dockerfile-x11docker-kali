@@ -140,6 +140,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
       mingw-w64 \
       proxychains \
       gosu \
+      evil-winrm \
       kali-tweaks && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -149,8 +150,7 @@ RUN wget https://bootstrap.pypa.io/pip/2.7/get-pip.py  && \
     python2 get-pip.py && \
     rm -f get-pip.py && \
     python2 -m pip install pyftpdlib impacket --no-cache-dir && \
-    python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git git+https://github.com/bitsadmin/wesng.git --no-cache-dir && \
-    gem install evil-winrm
+    python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git git+https://github.com/bitsadmin/wesng.git --no-cache-dir
 
 #download random binaries and unzip stuff
 RUN git clone https://github.com/itm4n/PrivescCheck.git /opt/PrivescCheck && \
