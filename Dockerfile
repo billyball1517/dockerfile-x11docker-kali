@@ -80,6 +80,18 @@ RUN chmod +x ./install-chrome.sh && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+RUN wget https://dot.net/v1/dotnet-install.sh -P /usr/local/bin/ && \
+    chmod +x /usr/local/bin/dotnet-install.sh && \
+    wget "https://packages.microsoft.com/config/debian/$(curl https://packages.microsoft.com/config/debian/ 2> /dev/null | grep -E '^<a' | cut -d \" -f 2 | sort -nr | head -1)packages-microsoft-prod.deb" -P /tmp && \
+    apt-get update && \
+    apt-get install -y /tmp/packages-microsoft-prod.deb && \
+    rm -f /tmp/packages-microsoft-prod.deb && \
+    apt-get update && \
+#not sure whether it's actually worth it to include dotnet stuff in the base image but at least the repo's set up
+#    apt-get install -y dotnet-sdk-6.0 && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 RUN dpkg --add-architecture i386 && \
     wget -nc https://dl.winehq.org/wine-builds/winehq.key && \
     apt-key add winehq.key && \
