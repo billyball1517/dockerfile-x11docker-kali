@@ -53,7 +53,8 @@ RUN apt-get update && \
       systemd \
       kali-linux-default && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    gunzip /usr/share/wordlists/rockyou.txt.gz
 
 #install the i3 tiling wm
 RUN apt-get update && \
@@ -187,8 +188,7 @@ RUN git clone https://github.com/itm4n/PrivescCheck.git /opt/PrivescCheck && \
     wget https://github.com/gentilkiwi/mimikatz/files/4167347/mimikatz_trunk.zip && \
     unzip mimikatz_trunk.zip -d /usr/share/windows-resources/mimikatz/ && \
     rm -f mimikatz_trunk.zip && \
-    chmod +x /usr/share/windows-resources/binaries/* && \
-    gunzip /usr/share/wordlists/rockyou.txt.gz
+    chmod +x /usr/share/windows-resources/binaries/*
 
 #final random configs
 ENV DEBIAN_FRONTEND=readline
