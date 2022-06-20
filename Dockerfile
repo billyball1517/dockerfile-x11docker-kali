@@ -169,7 +169,9 @@ RUN git clone https://github.com/itm4n/PrivescCheck.git /opt/PrivescCheck && \
     gunzip /opt/chisel/* && \
     chmod +x /opt/chisel/* && \
     wget https://live.sysinternals.com/PsExec.exe -P /usr/share/windows-resources/binaries/ && \
-    wget https://web.archive.org/web/20080530012252/http://live.sysinternals.com/accesschk.exe -P /usr/share/windows-resources/binaries/ && \
+    wget wget https://web.archive.org/web/20071007120748/http://download.sysinternals.com/Files/Accesschk.zip && \
+    unzip Accesschk.zip -d /usr/share/windows-resources/binaries/ -x Eula.txt && \
+    rm -f Accesschk.zip
     wget https://github.com/Re4son/Churrasco/raw/master/churrasco.exe -P /usr/share/windows-resources/binaries/ && \
     wget https://github.com/itm4n/PrintSpoofer/releases/latest/download/PrintSpoofer32.exe -P /usr/share/windows-resources/binaries/ && \
     wget https://github.com/itm4n/PrintSpoofer/releases/latest/download/PrintSpoofer64.exe -P /usr/share/windows-resources/binaries/ && \
