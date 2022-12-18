@@ -214,9 +214,10 @@ RUN sed -i '$d' /etc/proxychains.conf && \
     chmod +x ./wireshark-expect && \
     ./wireshark-expect && \
     rm -f ./wireshark-expect && \
+    echo 'dbms.security.auth_minimum_password_length=5' >> /etc/neo4j/neo4j.conf && \
     systemctl enable neo4j && \
     service neo4j start && \
-    neo4j-admin dbms set-initial-password neo4j && \
+    neo4j-admin dbms set-initial-password neo4j --require-password-change && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 1 && \
     update-alternatives --install /usr/bin/python python /usr/bin/python2 2 && \
     updatedb
