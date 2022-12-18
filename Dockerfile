@@ -193,7 +193,10 @@ RUN git clone https://github.com/itm4n/PrivescCheck.git /opt/PrivescCheck && \
     wget https://github.com/gentilkiwi/mimikatz/files/4167347/mimikatz_trunk.zip && \
     unzip mimikatz_trunk.zip -d /usr/share/windows-resources/mimikatz/ && \
     rm -f mimikatz_trunk.zip && \
-    chmod +x /usr/share/windows-resources/binaries/*
+    chmod +x /usr/share/windows-resources/binaries/* && \
+    wget https://dl.pstmn.io/download/latest/linux64 -P /tmp && \
+    tar xvzf /tmp/linux64 -C /opt/ && \
+    ln -s /opt/Postman/app/Postman /usr/local/bin/Postman
 
 #final random configs
 ENV DEBIAN_FRONTEND=readline
