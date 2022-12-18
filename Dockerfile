@@ -216,7 +216,7 @@ RUN sed -i '$d' /etc/proxychains.conf && \
     rm -f ./wireshark-expect && \
     systemctl enable neo4j && \
     service neo4j start && \
-    neo4j-admin set-initial-password neo4j && \
+    neo4j-admin dbms set-initial-password neo4j && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 1 && \
     update-alternatives --install /usr/bin/python python /usr/bin/python2 2 && \
     updatedb
