@@ -93,7 +93,7 @@ RUN wget https://dot.net/v1/dotnet-install.sh -P /usr/local/bin/ && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-COPY winehq-testing.sources /etc/apt/sources.list.d/winehq-testing.sources
+COPY winehq-bookworm.sources /etc/apt/sources.list.d/winehq-bookworm.sources
 
 RUN dpkg --add-architecture i386 && \
 #    wget -nc https://dl.winehq.org/wine-builds/winehq.key && \
