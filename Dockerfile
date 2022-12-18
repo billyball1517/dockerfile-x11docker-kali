@@ -97,10 +97,10 @@ RUN dpkg --add-architecture i386 && \
 #    wget -nc https://dl.winehq.org/wine-builds/winehq.key && \
 #    apt-key add winehq.key && \
 #    rm -f winehq.key && \
-#    echo 'deb https://dl.winehq.org/wine-builds/debian/ testing main' > /etc/apt/sources.list.d/winehq.list && \
+    echo 'deb https://dl.winehq.org/wine-builds/debian/ testing main' > /etc/apt/sources.list.d/winehq.list && \
     mkdir -pm755 /etc/apt/keyrings && \
     wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key && \
-    wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources && \    
+#    wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources && \    
     apt update && \
     apt install -y --install-recommends winehq-stable && \
     wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks -P /usr/local/bin && \
