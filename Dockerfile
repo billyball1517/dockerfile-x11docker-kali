@@ -67,9 +67,9 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
 # this stuff is to add the 3rd party repos
-      software-properties-common apt-transport-https wget gpg gpg-agent \
+      software-properties-common apt-transport-https wget gpg gpg-agent && \
 # this is for gpu support (experimental)
-      mesa-utils mesa-utils-extra libxv1 && \
+#      mesa-utils mesa-utils-extra libxv1 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
