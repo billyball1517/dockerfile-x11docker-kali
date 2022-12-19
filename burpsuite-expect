@@ -3,6 +3,7 @@
 set timeout -1
 
 spawn /tmp/burpsuite.sh -f readline
+
 expect "This will install Burp Suite Community Edition on your computer."
 send "\r"
 
