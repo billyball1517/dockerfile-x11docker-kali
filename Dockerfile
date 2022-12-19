@@ -54,7 +54,8 @@ RUN apt-get update && \
       kali-linux-default && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    gunzip /usr/share/wordlists/rockyou.txt.gz
+    gunzip /usr/share/wordlists/rockyou.txt.gz && \
+    rm -f /usr/bin/burpsuite /usr/share/burpsuite/burpsuite.jar
 
 #install the i3 tiling wm
 RUN apt-get update && \
@@ -151,6 +152,20 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+#Install latest version of burpsuite and Postman seperatly
+COPY burpsuite-expect /burpsuite-expect
+
+RUN wget https://dl.pstmn.io/download/latest/linux64 -P /tmp && \
+    tar xvzf /tmp/linux64 -C /opt/ && \
+    rm -f /tmp/linux64 && \
+    ln -s /opt/Postman/app/Postman /usr/local/bin/Postman && \
+    wget 'https://portswigger-cdn.net/burp/releases/download?product=community&type=Linux' -O /tmp/burpsuite.sh && \
+    chmod +x /tmp/burpsuite.sh && \
+    chmod +x /burpsuite-expect && \
+    /burpsuite-expect && \
+    rm -f /tmp/burpsuite.sh && \
+    rm -f /burpsuite-expect
+
 #install non-apt stuff
 RUN wget https://bootstrap.pypa.io/pip/2.7/get-pip.py  && \
     python2 get-pip.py && \
@@ -193,10 +208,7 @@ RUN git clone https://github.com/itm4n/PrivescCheck.git /opt/PrivescCheck && \
     wget https://github.com/gentilkiwi/mimikatz/files/4167347/mimikatz_trunk.zip && \
     unzip mimikatz_trunk.zip -d /usr/share/windows-resources/mimikatz/ && \
     rm -f mimikatz_trunk.zip && \
-    chmod +x /usr/share/windows-resources/binaries/* && \
-    wget https://dl.pstmn.io/download/latest/linux64 -P /tmp && \
-    tar xvzf /tmp/linux64 -C /opt/ && \
-    ln -s /opt/Postman/app/Postman /usr/local/bin/Postman
+    chmod +x /usr/share/windows-resources/binaries/*
 
 #final random configs
 ENV DEBIAN_FRONTEND=readline
