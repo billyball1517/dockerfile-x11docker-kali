@@ -1,4 +1,7 @@
 #!/usr/bin/expect
+
+set timeout -1
+
 spawn /tmp/burpsuite.sh -f readline
 expect "This will install Burp Suite Community Edition on your computer."
 send "\r"
@@ -10,9 +13,6 @@ expect "Create symlinks?"
 send "\r"
 
 expect "Select the folder where you would like Burp Suite Community Edition to create symlinks, then click Next."
-send "\r"
-
-expect "Finishing installation ..."
 send "\r"
 
 # done
